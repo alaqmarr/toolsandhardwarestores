@@ -7,10 +7,10 @@ export async function PUT(
   context: { params: Promise<{ id: string }> },
 ) {
   try {
-    // const session = await getSession()
-    // if (!session) {
-    //   return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
-    // }
+    const session = await getSession()
+    if (!session) {
+          return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+        }
 
     const { id } = await context.params;
     const body = await req.json();
@@ -66,12 +66,12 @@ export async function DELETE(
 ) {
   try {
     const session = await getSession();
-    // if (!session) {
+    if (!session) {
     //   return NextResponse.json(
     //     { error: "Unauthorized admin access." },
     //     { status: 401 },
     //   );
-    // }
+        }
 
     const { id } = await context.params;
 

@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import ReactDropzoneUploader from '@/components/ReactDropzoneUploader'
+import ConfirmDialog from './ConfirmDialog'
 
 interface BrandItem {
   id: string
@@ -40,6 +41,7 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
   const router = useRouter()
   const [brands, setBrands] = useState<BrandItem[]>(initialBrands)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
 
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -160,6 +162,48 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
     )
   }, [brands, searchQuery])
 
+  const toggleSelection = (id: string) => {
+    const newSet = new Set(selectedIds)
+    if (newSet.has(id)) newSet.delete(id)
+    else newSet.add(id)
+    setSelectedIds(newSet)
+  }
+
+  const toggleAll = () => {
+    if (selectedIds.size === filteredBrands.length) {
+      setSelectedIds(new Set())
+    } else {
+      setSelectedIds(new Set(filteredBrands.map(b => b.id)))
+    }
+  }
+
+  const [isBulkDeleteModalOpen, setIsBulkDeleteModalOpen] = useState(false)
+  const [isBulkDeleting, setIsBulkDeleting] = useState(false)
+
+  const handleBulkDelete = async () => {
+    setIsBulkDeleting(true)
+    const toastId = toast.loading('Deleting selected brands...')
+    try {
+      const res = await fetch('/api/admin/brands', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: Array.from(selectedIds) }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Bulk deletion failed')
+
+      toast.success(data.message || 'Brands deleted successfully.', { id: toastId })
+      setBrands((prev) => prev.filter((b) => !selectedIds.has(b.id)))
+      setSelectedIds(new Set())
+      setIsBulkDeleteModalOpen(false)
+      router.refresh()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to delete brands', { id: toastId })
+    } finally {
+      setIsBulkDeleting(false)
+    }
+  }
+
   return (
     <div className="space-y-8">
       {/* Header Bar */}
@@ -198,9 +242,21 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
             className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
           />
         </div>
-        <div className="text-xs font-bold text-slate-500">
-          Showing <span className="text-slate-900 font-extrabold">{filteredBrands.length}</span> of{' '}
-          {brands.length} brands
+        <div className="flex items-center gap-4">
+          {selectedIds.size > 0 && (
+            <button
+              type="button"
+              onClick={() => setIsBulkDeleteModalOpen(true)}
+              className="bg-red-50 hover:bg-red-100 text-red-600 font-bold px-4 py-2.5 rounded-xl border border-red-200 transition flex items-center gap-2 text-sm"
+            >
+              <Trash2 className="w-4 h-4" />
+              <span>Delete Selected ({selectedIds.size})</span>
+            </button>
+          )}
+          <div className="text-xs font-bold text-slate-500">
+            Showing <span className="text-slate-900 font-extrabold">{filteredBrands.length}</span> of{' '}
+            {brands.length} brands
+          </div>
         </div>
       </div>
 
@@ -219,7 +275,15 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
-                  <th className="py-4 pl-6 pr-4">Brand Logo & Name</th>
+                  <th className="py-4 pl-6 pr-2 w-12">
+                    <input
+                      type="checkbox"
+                      checked={filteredBrands.length > 0 && selectedIds.size === filteredBrands.length}
+                      onChange={toggleAll}
+                      className="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                    />
+                  </th>
+                  <th className="py-4 px-4">Brand Logo & Name</th>
                   <th className="py-4 px-4">Description</th>
                   <th className="py-4 px-4">Distributor Status</th>
                   <th className="py-4 px-4">Assigned Tools</th>
@@ -228,8 +292,16 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
                 {filteredBrands.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50/80 transition">
-                    <td className="py-4 pl-6 pr-4">
+                  <tr key={item.id} className={`hover:bg-slate-50/80 transition ${selectedIds.has(item.id) ? 'bg-slate-50' : ''}`}>
+                    <td className="py-4 pl-6 pr-2">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(item.id)}
+                        onChange={() => toggleSelection(item.id)}
+                        className="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                      />
+                    </td>
+                    <td className="py-4 px-4">
                       <div className="flex items-center gap-3.5">
                         <div className="relative w-12 h-12 rounded-xl border border-slate-200 bg-white overflow-hidden shrink-0 flex items-center justify-center p-1">
                           {item.image ? (
@@ -445,6 +517,18 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        isOpen={isBulkDeleteModalOpen}
+        title="Delete Selected Brands"
+        description={`Are you sure you want to permanently delete ${selectedIds.size} brands? This action cannot be undone.`}
+        confirmText="Yes, Delete All"
+        cancelText="Cancel"
+        isDangerous={true}
+        isLoading={isBulkDeleting}
+        onConfirm={handleBulkDelete}
+        onCancel={() => setIsBulkDeleteModalOpen(false)}
+      />
     </div>
   )
 }

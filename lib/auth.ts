@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 
-const SECRET_KEY = new TextEncoder().encode(process.env.JWT_SECRET);
+const getSecretKey = () => new TextEncoder().encode(process.env.JWT_SECRET || "fallback_secret_key_for_development");
 
 export interface AdminSessionPayload {
   adminId: string;
@@ -28,14 +28,14 @@ export async function signToken(payload: AdminSessionPayload): Promise<string> {
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("7d")
-    .sign(SECRET_KEY);
+    .sign(getSecretKey());
 }
 
 export async function verifyToken(
   token: string,
 ): Promise<AdminSessionPayload | null> {
   try {
-    const { payload } = await jwtVerify(token, SECRET_KEY);
+    const { payload } = await jwtVerify(token, getSecretKey());
     return payload as unknown as AdminSessionPayload;
   } catch {
     return null;

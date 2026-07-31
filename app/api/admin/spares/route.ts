@@ -5,11 +5,10 @@ import { slugify, slugifyId } from "@/lib/slugify";
 
 export async function POST(req: Request) {
   try {
-    // const session = await getSession()
-    // if (!session) {
-    //   return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
-    // }
-
+const session = await getSession()
+if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    }
     const body = await req.json();
     const {
       name,
@@ -73,5 +72,38 @@ export async function POST(req: Request) {
       { error: error?.message || "Failed to create spare part." },
       { status: 500 },
     );
+  }}
+
+export async function DELETE(req: Request) {
+  try {
+    const session = await getSession()
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    }
+
+    const body = await req.json()
+    const { ids } = body
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return NextResponse.json({ error: "No IDs provided." }, { status: 400 })
+    }
+
+    const result = await prisma.spare.deleteMany({
+      where: { id: { in: ids } },
+    })
+
+    return NextResponse.json({
+      success: true,
+      message: `Successfully deleted ${result.count} spares.`,
+      count: result.count
+    })
+  } catch (error: any) {
+    console.error("Bulk delete spares error:", error)
+    return NextResponse.json(
+      { error: error?.message || "Failed to delete spares." },
+      { status: 500 }
+    )
   }
 }
+
+

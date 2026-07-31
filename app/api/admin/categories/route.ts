@@ -5,11 +5,10 @@ import { slugify, slugifyId } from "@/lib/slugify";
 
 export async function POST(req: Request) {
   try {
-    // const session = await getSession()
-    // if (!session) {
-    //   return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
-    // }
-
+const session = await getSession()
+if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    }
     const body = await req.json();
     const { name, description, image } = body;
 
@@ -57,5 +56,38 @@ export async function POST(req: Request) {
       { error: error?.message || "Failed to create category." },
       { status: 500 },
     );
+  }}
+
+export async function DELETE(req: Request) {
+  try {
+    const session = await getSession()
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    }
+
+    const body = await req.json()
+    const { ids } = body
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return NextResponse.json({ error: "No IDs provided." }, { status: 400 })
+    }
+
+    const result = await prisma.category.deleteMany({
+      where: { id: { in: ids } },
+    })
+
+    return NextResponse.json({
+      success: true,
+      message: `Successfully deleted ${result.count} categories.`,
+      count: result.count
+    })
+  } catch (error: any) {
+    console.error("Bulk delete categories error:", error)
+    return NextResponse.json(
+      { error: error?.message || "Failed to delete categories." },
+      { status: 500 }
+    )
   }
 }
+
+
