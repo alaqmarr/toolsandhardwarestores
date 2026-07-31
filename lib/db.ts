@@ -1,23 +1,17 @@
 import { PrismaClient } from "@prisma/client";
 import Database from "better-sqlite3";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import path from "path";
-import fs from "fs";
 
-const dbDir = path.join(process.cwd(), "prisma");
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
-}
+const dbUrl = process.env.DATABASE_URL ?? "file:./prisma/database.db";
+const dbPath = dbUrl.startsWith("file:") ? dbUrl.slice(5) : dbUrl;
 
-const dbPath = path.join(dbDir, "database.db");
 const sqlite = new Database(dbPath);
 
-// Explicitly enable WAL and SHM mode for maximum concurrency and SQLite performance
 sqlite.pragma("journal_mode = WAL");
 sqlite.pragma("synchronous = NORMAL");
 sqlite.close();
 
-const adapter = new PrismaBetterSqlite3({ url: dbPath });
+const adapter = new PrismaBetterSqlite3({ url: dbUrl as string });
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
