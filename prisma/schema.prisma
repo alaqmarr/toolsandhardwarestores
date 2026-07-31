@@ -1,0 +1,144 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id           String   @id
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Brand {
+  id          String    @id
+  name        String
+  slug        String    @unique
+  image       String?
+  isCore      Boolean   @default(false)
+  isSpecialty Boolean   @default(false)
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Category {
+  id          String    @id
+  name        String
+  slug        String    @unique
+  image       String?
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id          String         @id
+  name        String
+  slug        String         @unique
+  brandId     String
+  brand       Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  description String
+  features    String?
+  images      String
+  videoUrl    String?
+  isFeatured  Boolean        @default(false)
+  spares      ProductSpare[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model SpareCategory {
+  id          String          @id
+  name        String
+  slug        String          @unique
+  parentId    String?
+  parent      SpareCategory?  @relation("SubCategories", fields: [parentId], references: [id], onDelete: SetNull)
+  children    SpareCategory[] @relation("SubCategories")
+  image       String?
+  description String?
+  spares      Spare[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model Spare {
+  id              String         @id
+  name            String
+  slug            String         @unique
+  spareCategoryId String
+  spareCategory   SpareCategory  @relation(fields: [spareCategoryId], references: [id], onDelete: Cascade)
+  description     String?
+  images          String
+  priceNote       String?
+  products        ProductSpare[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model ProductSpare {
+  id        String  @id
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  spareId   String
+  spare     Spare   @relation(fields: [spareId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, spareId])
+}
+
+model StoreLocation {
+  id        String   @id
+  name      String
+  address   String
+  phone     String
+  email     String?
+  latitude  Float
+  longitude Float
+  hours     String
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactSetting {
+  id              String   @id @default("settings-main")
+  primaryPhone    String
+  whatsappNumber  String
+  primaryEmail    String
+  supportEmail    String?
+  addressText     String
+  mapEmbedUrl     String?
+  smtpHost        String?
+  smtpPort        Int?
+  smtpUser        String?
+  smtpPass        String?
+  r2Bucket        String?
+  r2AccountId     String?
+  r2AccessKeyId   String?
+  r2SecretKey     String?
+  r2PublicUrl     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ResourceCatalogue {
+  id          String   @id @default(cuid())
+  title       String
+  category    String   // e.g. "Power Tools", "Heavy Machinery", "Spare Parts", "Safety Manuals"
+  description String?
+  fileUrl     String
+  fileSize    String?
+  fileType    String?  // e.g. "PDF", "XLSX", "ZIP"
+  isPublic    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
