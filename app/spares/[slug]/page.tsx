@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: SpareDetailPageProps): Promis
   const mainImg = imageList[0]
 
   const titleText = `${spare.name} | Genuine Spare Part - Industrial Tool Specialists`
-  const descText = `${spare.description || 'Authentic replacement part'} Stocked at our Flagship Showroom & Support Hub. Category: ${spare.spareCategory.name}. Enquire on WhatsApp for immediate availability.`
+  const descText = `${spare.description || 'Authentic replacement part'} Stocked at our Flagship Showroom & Support Hub. Category: ${spare.spareCategory?.name || 'Uncategorized'}. Enquire on WhatsApp for immediate availability.`
 
   return {
     title: titleText,
@@ -117,8 +117,8 @@ export default async function SpareDetailPage({ params }: SpareDetailPageProps) 
     itemType: 'Spare Part',
     itemSlug: spare.slug,
     extraNotes: `Category: ${
-      spare.spareCategory.parent ? `${spare.spareCategory.parent.name} -> ` : ''
-    }${spare.spareCategory.name}`,
+      spare.spareCategory ? `${spare.spareCategory.parent ? `${spare.spareCategory.parent.name} -> ` : ''}${spare.spareCategory.name}` : 'Uncategorized'
+    }`,
   })
 
   return (
@@ -161,8 +161,8 @@ export default async function SpareDetailPage({ params }: SpareDetailPageProps) 
         <div className="lg:col-span-6 space-y-6">
           <div className="space-y-3">
             <div className="text-xs font-extrabold text-red-600 uppercase tracking-wider">
-              {spare.spareCategory.parent ? `${spare.spareCategory.parent.name} • ` : ''}
-              {spare.spareCategory.name}
+              {spare.spareCategory?.parent ? `${spare.spareCategory.parent.name} • ` : ''}
+              {spare.spareCategory?.name || 'Uncategorized'}
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
               {spare.name}
