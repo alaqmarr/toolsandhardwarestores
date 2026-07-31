@@ -16,6 +16,7 @@ import {
   Package,
 } from 'lucide-react'
 import ReactDropzoneUploader from '@/components/ReactDropzoneUploader'
+import ConfirmDialog from './ConfirmDialog'
 
 interface CategoryItem {
   id: string
@@ -38,6 +39,7 @@ export default function CategoriesAdminClient({
   const router = useRouter()
   const [categories, setCategories] = useState<CategoryItem[]>(initialCategories)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
 
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -154,6 +156,48 @@ export default function CategoriesAdminClient({
     )
   }, [categories, searchQuery])
 
+  const toggleSelection = (id: string) => {
+    const newSet = new Set(selectedIds)
+    if (newSet.has(id)) newSet.delete(id)
+    else newSet.add(id)
+    setSelectedIds(newSet)
+  }
+
+  const toggleAll = () => {
+    if (selectedIds.size === filteredCategories.length) {
+      setSelectedIds(new Set())
+    } else {
+      setSelectedIds(new Set(filteredCategories.map(c => c.id)))
+    }
+  }
+
+  const [isBulkDeleteModalOpen, setIsBulkDeleteModalOpen] = useState(false)
+  const [isBulkDeleting, setIsBulkDeleting] = useState(false)
+
+  const handleBulkDelete = async () => {
+    setIsBulkDeleting(true)
+    const toastId = toast.loading('Deleting selected categories...')
+    try {
+      const res = await fetch('/api/admin/categories', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: Array.from(selectedIds) }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Bulk deletion failed')
+
+      toast.success(data.message || 'Categories deleted successfully.', { id: toastId })
+      setCategories((prev) => prev.filter((c) => !selectedIds.has(c.id)))
+      setSelectedIds(new Set())
+      setIsBulkDeleteModalOpen(false)
+      router.refresh()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to delete categories', { id: toastId })
+    } finally {
+      setIsBulkDeleting(false)
+    }
+  }
+
   return (
     <div className="space-y-8">
       {/* Header Bar */}
@@ -192,9 +236,21 @@ export default function CategoriesAdminClient({
             className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
           />
         </div>
-        <div className="text-xs font-bold text-slate-500">
-          Showing <span className="text-slate-900 font-extrabold">{filteredCategories.length}</span>{' '}
-          of {categories.length} categories
+        <div className="flex items-center gap-4">
+          {selectedIds.size > 0 && (
+            <button
+              type="button"
+              onClick={() => setIsBulkDeleteModalOpen(true)}
+              className="bg-red-50 hover:bg-red-100 text-red-600 font-bold px-4 py-2.5 rounded-xl border border-red-200 transition flex items-center gap-2 text-sm"
+            >
+              <Trash2 className="w-4 h-4" />
+              <span>Delete Selected ({selectedIds.size})</span>
+            </button>
+          )}
+          <div className="text-xs font-bold text-slate-500">
+            Showing <span className="text-slate-900 font-extrabold">{filteredCategories.length}</span> of{' '}
+            {categories.length} categories
+          </div>
         </div>
       </div>
 
@@ -213,7 +269,15 @@ export default function CategoriesAdminClient({
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
-                  <th className="py-4 pl-6 pr-4">Category & Banner</th>
+                  <th className="py-4 pl-6 pr-2 w-12">
+                    <input
+                      type="checkbox"
+                      checked={filteredCategories.length > 0 && selectedIds.size === filteredCategories.length}
+                      onChange={toggleAll}
+                      className="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                    />
+                  </th>
+                  <th className="py-4 px-4">Category & Banner</th>
                   <th className="py-4 px-4">Description</th>
                   <th className="py-4 px-4">Assigned Tools</th>
                   <th className="py-4 pl-4 pr-6 text-right">Actions</th>
@@ -221,8 +285,16 @@ export default function CategoriesAdminClient({
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
                 {filteredCategories.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50/80 transition">
-                    <td className="py-4 pl-6 pr-4">
+                  <tr key={item.id} className={`hover:bg-slate-50/80 transition ${selectedIds.has(item.id) ? 'bg-slate-50' : ''}`}>
+                    <td className="py-4 pl-6 pr-2">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(item.id)}
+                        onChange={() => toggleSelection(item.id)}
+                        className="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                      />
+                    </td>
+                    <td className="py-4 px-4">
                       <div className="flex items-center gap-3.5">
                         <div className="relative w-14 h-11 rounded-xl border border-slate-200 bg-white overflow-hidden shrink-0">
                           <img
@@ -401,6 +473,18 @@ export default function CategoriesAdminClient({
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        isOpen={isBulkDeleteModalOpen}
+        title="Delete Selected Categories"
+        description={`Are you sure you want to permanently delete ${selectedIds.size} categories? This action cannot be undone and will affect associated products.`}
+        confirmText="Yes, Delete All"
+        cancelText="Cancel"
+        isDangerous={true}
+        isLoading={isBulkDeleting}
+        onConfirm={handleBulkDelete}
+        onCancel={() => setIsBulkDeleteModalOpen(false)}
+      />
     </div>
   )
 }

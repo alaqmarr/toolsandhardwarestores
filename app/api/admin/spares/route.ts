@@ -19,9 +19,9 @@ if (!session) {
       productIds = [],
     } = body;
 
-    if (!name || !spareCategoryId) {
+    if (!name) {
       return NextResponse.json(
-        { error: "Spare part name and category are required." },
+        { error: "Spare part name is required." },
         { status: 400 },
       );
     }
@@ -40,7 +40,7 @@ if (!session) {
         id: finalId,
         name: name.trim(),
         slug: finalSlug,
-        spareCategoryId,
+        spareCategoryId: spareCategoryId || null,
         description: description?.trim() || null,
         images:
           images ||

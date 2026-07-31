@@ -157,7 +157,7 @@ export default async function HomePage() {
         </div>
 
         <div className="relative flex overflow-hidden">
-          <div className="flex gap-16 items-center animate-scroll whitespace-nowrap">
+          <div className="flex gap-16 items-center animate-marquee whitespace-nowrap">
             {[...brands, ...brands].map((brand, idx) => (
               <div
                 key={`${brand.id}-${idx}`}

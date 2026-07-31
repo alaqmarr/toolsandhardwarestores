@@ -10,54 +10,7 @@ export async function GET(req: NextRequest) {
       orderBy: { createdAt: 'desc' },
     })
 
-    if (catalogues.length === 0) {
-      const defaultCatalogues = [
-        {
-          title: 'Bosch Professional Power Tools 2026 Master Catalogue',
-          category: 'Power Tools',
-          description: 'Full range of rotary hammers, demolition breakers, angle grinders, and cordless industrial drills.',
-          fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-          fileSize: '14.2 MB',
-          fileType: 'PDF',
-          isPublic: true,
-        },
-        {
-          title: 'DeWalt Industrial Heavy Machinery & Demolition Brochure',
-          category: 'Heavy Machinery',
-          description: 'Technical specifications and performance ratings for 60V FLEXVOLT and heavy industrial cutters.',
-          fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-          fileSize: '18.5 MB',
-          fileType: 'PDF',
-          isPublic: true,
-        },
-        {
-          title: 'Makita Cordless LXT & XGT Tool Specifications Sheet',
-          category: 'Power Tools',
-          description: '40V Max XGT and 18V LXT cordless tool platform catalog with battery compatibility matrices.',
-          fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-          fileSize: '9.8 MB',
-          fileType: 'PDF',
-          isPublic: true,
-        },
-        {
-          title: 'Universal Spare Parts Fitment Guide & Armature Matrix',
-          category: 'Spare Parts',
-          description: 'Cross-reference fitment guide for armatures, field stators, carbon brushes, and steel gears.',
-          fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-          fileSize: '6.4 MB',
-          fileType: 'PDF',
-          isPublic: true,
-        },
-      ]
-
-      for (const cat of defaultCatalogues) {
-        await prisma.resourceCatalogue.create({ data: cat })
-      }
-
-      catalogues = await prisma.resourceCatalogue.findMany({
-        orderBy: { createdAt: 'desc' },
-      })
-    }
+    // No dummy resources needed
 
     return NextResponse.json(catalogues)
   } catch (error: any) {

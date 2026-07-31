@@ -75,8 +75,8 @@ model Spare {
   id              String         @id
   name            String
   slug            String         @unique
-  spareCategoryId String
-  spareCategory   SpareCategory  @relation(fields: [spareCategoryId], references: [id], onDelete: Cascade)
+  spareCategoryId String?
+  spareCategory   SpareCategory? @relation(fields: [spareCategoryId], references: [id], onDelete: SetNull)
   description     String?
   images          String
   priceNote       String?

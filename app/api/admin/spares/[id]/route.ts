@@ -27,7 +27,9 @@ export async function PUT(
       where: { id },
       data: {
         ...(name && { name: name.trim() }),
-        ...(spareCategoryId && { spareCategoryId }),
+        ...(spareCategoryId !== undefined && {
+          spareCategoryId: spareCategoryId ? spareCategoryId : null,
+        }),
         ...(description !== undefined && {
           description: description ? description.trim() : null,
         }),
