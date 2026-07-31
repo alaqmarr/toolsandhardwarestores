@@ -23,6 +23,12 @@ export default async function ContactPage() {
   const storeLocations = await prisma.storeLocation.findMany({
     orderBy: { isPrimary: 'desc' },
   })
+  
+  const primaryStore = storeLocations.find((s) => s.isPrimary) || storeLocations[0] || {
+    name: 'Flagship Showroom & Support Hub',
+    address: 'Ranigunj HQ • Secunderabad & Hyderabad Industrial Supply',
+    hours: 'Monday – Saturday: 9:30 AM – 8:30 PM, Sunday: 10:00 AM – 2:00 PM',
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 pb-24">
@@ -100,14 +106,14 @@ export default async function ContactPage() {
           <div className="bg-white rounded-3xl p-8 border border-slate-200 space-y-5 shadow-sm">
             <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
               <Building2 className="w-5 h-5 text-red-500" />
-              <span>Flagship Showroom & Support Hub</span>
+              <span>{primaryStore.name}</span>
             </h3>
 
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <p className="text-slate-700 leading-relaxed font-medium">
-                  Ranigunj HQ • Secunderabad & Hyderabad Industrial Supply
+                  {primaryStore.address}
                 </p>
               </div>
 
@@ -121,20 +127,25 @@ export default async function ContactPage() {
               <div className="font-bold text-slate-900 uppercase tracking-wider mb-1">
                 Showroom Operating Hours
               </div>
-              <div className="flex items-center justify-between text-slate-700">
-                <span>Monday – Saturday:</span>
-                <span className="font-bold">9:30 AM – 8:30 PM</span>
-              </div>
-              <div className="flex items-center justify-between text-slate-700 border-t border-slate-200 pt-1">
-                <span>Sunday:</span>
-                <span className="font-bold text-red-500">10:00 AM – 2:00 PM</span>
+              <div className="flex flex-col text-slate-700 space-y-2">
+                {primaryStore.hours.split(',').map((line, i) => {
+                  const parts = line.split(':');
+                  const day = parts[0]?.trim() || '';
+                  const time = parts.slice(1).join(':').trim() || '';
+                  return (
+                    <div key={i} className={`flex items-center justify-between ${i > 0 ? 'border-t border-slate-200 pt-2' : ''}`}>
+                      <span>{day}:</span>
+                      <span className={`font-bold ${day.toLowerCase().includes('sun') ? 'text-red-500' : ''}`}>{time}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             <div className="pt-2 space-y-2">
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  settings.addressText
+                  primaryStore.address
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

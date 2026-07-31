@@ -4,62 +4,15 @@ import { Search, Filter, Wrench, ShieldCheck, Tag, X } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
 import ProductCard from '@/components/ProductCard'
-import ProductsGlobalSearch from '@/components/ProductsGlobalSearch'
 
-export const revalidate = 60
 
-interface ProductsPageProps {
-  searchParams: Promise<{
-    q?: string
-    brand?: string
-    category?: string
-  }>
-}
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { q, brand: brandSlug, category: categorySlug } = await searchParams
+export const revalidate = 3600 // SSG ISR revalidation
+
+export default async function ProductsPage() {
   const settings = await getContactSettings()
 
-  const brands = await prisma.brand.findMany({
-    orderBy: { name: 'asc' },
-  })
-
-  const categories = await prisma.category.findMany({
-    orderBy: { name: 'asc' },
-  })
-
-  // Build prisma filter
-  const whereClause: any = {}
-
-  if (q && q.trim()) {
-    const tokens = q.trim().split(/\s+/).filter(Boolean)
-    whereClause.AND = tokens.map((token) => ({
-      OR: [
-        { name: { contains: token } },
-        { description: { contains: token } },
-        { features: { contains: token } },
-        { brand: { name: { contains: token } } },
-        { category: { name: { contains: token } } },
-      ],
-    }))
-  }
-
-  if (brandSlug) {
-    const matchedBrand = brands.find((b) => b.slug === brandSlug)
-    if (matchedBrand) {
-      whereClause.brandId = matchedBrand.id
-    }
-  }
-
-  if (categorySlug) {
-    const matchedCat = categories.find((c) => c.slug === categorySlug)
-    if (matchedCat) {
-      whereClause.categoryId = matchedCat.id
-    }
-  }
-
   const products = await prisma.product.findMany({
-    where: whereClause,
     include: {
       brand: true,
       category: true,
@@ -84,23 +37,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             fitments.
           </p>
         </div>
-
-        {/* Active filter badges */}
-        {(q || brandSlug || categorySlug) && (
-          <div className="flex flex-wrap items-center gap-2">
-            <Link
-              href="/products"
-              className="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
-            >
-              <X className="w-3.5 h-3.5" />
-              <span>Clear All Filters</span>
-            </Link>
-          </div>
-        )}
       </div>
 
-      {/* Global Tool & Machinery Search */}
-      <ProductsGlobalSearch />
+
 
       {/* Product Grid */}
       {products.length === 0 ? (

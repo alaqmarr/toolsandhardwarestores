@@ -8,24 +8,19 @@ import ProductCard from '@/components/ProductCard'
 import ShareButton from '@/components/ShareButton'
 import type { Metadata } from 'next'
 
-export const revalidate = 3600 // SSG ISR revalidation
 
-export async function generateStaticParams() {
-  const categories = await prisma.category.findMany({
-    select: { slug: true },
-  })
-  return categories.map((category) => ({
-    slug: category.slug,
-  }))
-}
 
 interface CategoryDetailPageProps {
   params: Promise<{
     slug: string
   }>
-  searchParams: Promise<{
-    brand?: string
-  }>
+}
+
+export async function generateStaticParams() {
+  const categories = await prisma.category.findMany({ select: { slug: true } })
+  return categories.map((cat) => ({
+    slug: cat.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: CategoryDetailPageProps): Promise<Metadata> {
@@ -68,10 +63,8 @@ export async function generateMetadata({ params }: CategoryDetailPageProps): Pro
 
 export default async function CategoryDetailPage({
   params,
-  searchParams,
 }: CategoryDetailPageProps) {
   const { slug } = await params
-  const { brand: selectedBrandSlug } = await searchParams
   const settings = await getContactSettings()
 
   const category = await prisma.category.findUnique({
@@ -82,27 +75,8 @@ export default async function CategoryDetailPage({
     notFound()
   }
 
-  // Fetch all brands that have products in this category
-  const brandsInCategory = await prisma.brand.findMany({
-    where: {
-      products: {
-        some: { categoryId: category.id },
-      },
-    },
-    orderBy: { name: 'asc' },
-  })
-
-  // Build product filter where clause
-  const whereClause: any = { categoryId: category.id }
-  if (selectedBrandSlug) {
-    const matchedBrand = brandsInCategory.find((b) => b.slug === selectedBrandSlug)
-    if (matchedBrand) {
-      whereClause.brandId = matchedBrand.id
-    }
-  }
-
   const products = await prisma.product.findMany({
-    where: whereClause,
+    where: { categoryId: category.id },
     include: {
       brand: true,
       category: true,
@@ -161,45 +135,7 @@ export default async function CategoryDetailPage({
         </div>
       </div>
 
-      {/* Brand Filter Tabs */}
-      {brandsInCategory.length > 1 && (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wider">
-            <Filter className="w-3.5 h-3.5 text-red-500" />
-            <span>Filter by Brand:</span>
-          </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <Link
-              href={`/categories/${category.slug}`}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition border ${
-                !selectedBrandSlug
-                  ? 'bg-red-50 text-red-900 border-red-300 shadow-2xs'
-                  : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
-              }`}
-            >
-              All Brands ({products.length})
-            </Link>
-
-            {brandsInCategory.map((brand) => {
-              const isSelected = selectedBrandSlug === brand.slug
-              return (
-                <Link
-                  key={brand.id}
-                  href={`/categories/${category.slug}?brand=${brand.slug}`}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition border flex items-center gap-1.5 ${
-                    isSelected
-                      ? 'bg-red-50 text-red-900 border-red-300 shadow-2xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
-                  }`}
-                >
-                  <span>{brand.name}</span>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      )}
 
       {/* Product Grid */}
       {products.length === 0 ? (

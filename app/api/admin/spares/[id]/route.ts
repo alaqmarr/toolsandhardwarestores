@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/auth";
@@ -9,7 +10,8 @@ export async function PUT(
   try {
     const session = await getSession()
     if (!session) {
-          return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+          revalidatePath('/', 'layout');
+    return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
         }
 
     const { id } = await context.params;
@@ -60,6 +62,7 @@ export async function PUT(
     });
   } catch (error: any) {
     console.error("Update spare error:", error);
+    revalidatePath('/', 'layout');
     return NextResponse.json(
       { error: error?.message || "Failed to update spare part." },
       { status: 500 },
