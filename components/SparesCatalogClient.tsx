@@ -20,7 +20,7 @@ export interface SpareItem {
       id: string
       name: string
     } | null
-  }
+  } | null
   products: {
     product: {
       id: string
@@ -59,13 +59,13 @@ export default function SparesCatalogClient({
       // Top category match
       if (selectedTopCatId) {
         const matchesTop =
-          spare.spareCategory.id === selectedTopCatId ||
-          spare.spareCategory.parent?.id === selectedTopCatId
+          spare.spareCategory?.id === selectedTopCatId ||
+          spare.spareCategory?.parent?.id === selectedTopCatId
         if (!matchesTop) return false
       }
       // Subcategory match
       if (selectedSubCatId) {
-        if (spare.spareCategory.id !== selectedSubCatId) return false
+        if (spare.spareCategory?.id !== selectedSubCatId) return false
       }
       // Search match
       if (searchQuery.trim()) {
@@ -76,7 +76,7 @@ export default function SparesCatalogClient({
         const fullText = [
           spare.name,
           spare.description || '',
-          spare.spareCategory.name,
+          spare.spareCategory?.name || '',
           compatibleText,
         ]
           .join(' ')
@@ -213,7 +213,7 @@ export default function SparesCatalogClient({
 
                   <div className="p-4 space-y-2">
                     <div className="text-[11px] font-bold text-red-600 uppercase tracking-wider">
-                      {spare.spareCategory.name}
+                      {spare.spareCategory?.name || 'Uncategorized'}
                     </div>
                     <h3 className="text-base font-bold text-slate-900 group-hover:text-red-600 transition line-clamp-2">
                       {spare.name}

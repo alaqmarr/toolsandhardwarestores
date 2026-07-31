@@ -25,7 +25,7 @@ interface SpareItem {
     parent: {
       name: string
     } | null
-  }
+  } | null
   products: {
     product: {
       id: string
@@ -71,8 +71,8 @@ export default function SpareModal({
     itemType: 'Spare Part',
     itemSlug: spare.slug,
     extraNotes: `Category: ${
-      spare.spareCategory.parent ? `${spare.spareCategory.parent.name} -> ` : ''
-    }${spare.spareCategory.name}`,
+      spare.spareCategory ? `${spare.spareCategory.parent ? `${spare.spareCategory.parent.name} -> ` : ''}${spare.spareCategory.name}` : 'Uncategorized'
+    }`,
   })
 
   return (
@@ -82,8 +82,8 @@ export default function SpareModal({
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
           <div>
             <div className="text-xs font-bold text-red-600 uppercase tracking-wider">
-              {spare.spareCategory.parent ? `${spare.spareCategory.parent.name} • ` : ''}
-              {spare.spareCategory.name}
+              {spare.spareCategory?.parent ? `${spare.spareCategory.parent.name} • ` : ''}
+              {spare.spareCategory?.name || 'Uncategorized'}
             </div>
             <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-4">
               {spare.name}

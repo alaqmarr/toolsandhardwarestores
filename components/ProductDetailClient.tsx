@@ -50,7 +50,7 @@ interface ProductDetailClientProps {
           parent: {
             name: string
           } | null
-        }
+        } | null
         products: {
           product: {
             id: string
@@ -370,7 +370,7 @@ export default function ProductDetailClient({
                       />
                       <div className="min-w-0">
                         <div className="text-[10px] text-red-700 font-bold uppercase">
-                          {spare.spareCategory.name}
+                          {spare.spareCategory?.name || 'Uncategorized'}
                         </div>
                         <div className="text-sm font-bold text-slate-900 group-hover:text-red-700 transition truncate">
                           {spare.name}
