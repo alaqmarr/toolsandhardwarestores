@@ -40,8 +40,7 @@ export default function AdminLoginClient() {
         duration: 3000,
       })
 
-      router.push('/admin')
-      router.refresh()
+      window.location.href = '/admin'
     } catch (err: any) {
       toast.error(err.message || 'Invalid administrator credentials', { id: toastId })
     } finally {
