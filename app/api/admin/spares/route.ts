@@ -7,9 +7,8 @@ import { slugify, slugifyId } from "@/lib/slugify";
 export async function POST(req: Request) {
   try {
 const session = await getSession()
-if (!session) {
-      revalidatePath('/', 'layout');
-    return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
     }
     const body = await req.json();
     const {
@@ -63,6 +62,7 @@ if (!session) {
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: "Spare part created successfully.",
@@ -70,7 +70,6 @@ if (!session) {
     });
   } catch (error: any) {
     console.error("Create spare error:", error);
-    revalidatePath('/', 'layout');
     return NextResponse.json(
       { error: error?.message || "Failed to create spare part." },
       { status: 500 },
@@ -91,10 +90,12 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ error: "No IDs provided." }, { status: 400 })
     }
 
+    await prisma.productSpare.deleteMany({ where: { spareId: { in: ids } } })
     const result = await prisma.spare.deleteMany({
       where: { id: { in: ids } },
     })
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: `Successfully deleted ${result.count} spares.`,

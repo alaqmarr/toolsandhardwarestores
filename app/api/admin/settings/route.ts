@@ -6,9 +6,8 @@ import { getSession } from "@/lib/auth";
 export async function PUT(req: Request) {
   try {
 const session = await getSession()
-if (!session) {
-      revalidatePath('/', 'layout');
-    return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
     }
     const body = await req.json();
     const {
@@ -68,6 +67,7 @@ if (!session) {
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: "Portal settings updated successfully.",

@@ -51,7 +51,7 @@ export default function CataloguesAdminClient() {
       const res = await fetch('/api/resources')
       if (res.ok) {
         const data = await res.json()
-        setCatalogues(data)
+        if (Array.isArray(data)) setCatalogues(data)
       }
     } catch (err) {
       console.error('Failed to fetch catalogues', err)

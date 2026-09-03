@@ -9,6 +9,7 @@ const sqlite = new Database(dbPath);
 
 sqlite.pragma("journal_mode = WAL");
 sqlite.pragma("synchronous = NORMAL");
+sqlite.pragma("foreign_keys = ON");
 sqlite.close();
 
 const adapter = new PrismaBetterSqlite3({ url: dbUrl as string });

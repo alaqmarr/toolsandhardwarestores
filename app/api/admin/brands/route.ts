@@ -7,9 +7,8 @@ import { slugify, slugifyId } from "@/lib/slugify";
 export async function POST(req: Request) {
   try {
 const session = await getSession()
-if (!session) {
-      revalidatePath('/', 'layout');
-    return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
     }
     const body = await req.json();
     const {
@@ -55,6 +54,7 @@ if (!session) {
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: "Brand created successfully.",
@@ -62,7 +62,6 @@ if (!session) {
     });
   } catch (error: any) {
     console.error("Create brand error:", error);
-    revalidatePath('/', 'layout');
     return NextResponse.json(
       { error: error?.message || "Failed to create brand." },
       { status: 500 },
@@ -87,6 +86,7 @@ export async function DELETE(req: Request) {
       where: { id: { in: ids } },
     })
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: `Successfully deleted ${result.count} brands.`,

@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import Image from 'next/image'
 import {
   Wrench,
   Plus,
@@ -15,7 +14,6 @@ import {
   X,
   Package,
   Layers,
-  FileText,
 } from 'lucide-react'
 import ReactDropzoneUploader from '@/components/ReactDropzoneUploader'
 import ConfirmDialog from './ConfirmDialog'
@@ -72,7 +70,7 @@ export default function SparesAdminClient({
   const [name, setName] = useState('')
   const [spareCategoryId, setSpareCategoryId] = useState('')
   const [description, setDescription] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrls, setImageUrls] = useState<string[]>([])
   const [priceNote, setPriceNote] = useState('Wholesale Bulk & Retail Availability')
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([])
 
@@ -81,7 +79,7 @@ export default function SparesAdminClient({
     setName('')
     setSpareCategoryId('')
     setDescription('')
-    setImageUrl('')
+    setImageUrls([])
     setPriceNote('Wholesale Bulk & Retail Availability')
     setSelectedProductIds([])
     setIsModalOpen(true)
@@ -92,9 +90,15 @@ export default function SparesAdminClient({
     setName(s.name)
     setSpareCategoryId(s.spareCategoryId || '')
     setDescription(s.description || '')
-    setImageUrl(s.images)
+    let parsedImages: string[] = []
+    try {
+      parsedImages = JSON.parse(s.images)
+    } catch {
+      parsedImages = [s.images]
+    }
+    setImageUrls(parsedImages.filter(Boolean))
     setPriceNote(s.priceNote || '')
-    setSelectedProductIds(s.products.map((p) => p.product.id))
+    setSelectedProductIds(s.products.filter((p) => p.product).map((p) => p.product.id))
     setIsModalOpen(true)
   }
 
@@ -125,9 +129,7 @@ export default function SparesAdminClient({
       name,
       spareCategoryId: spareCategoryId || null,
       description: description || null,
-      images:
-        imageUrl ||
-        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop',
+      images: JSON.stringify(imageUrls.length > 0 ? imageUrls : ['https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop']),
       priceNote: priceNote || 'Wholesale Bulk & Retail Availability',
       productIds: selectedProductIds,
     }
@@ -535,32 +537,11 @@ export default function SparesAdminClient({
                   Spare Part Image (Cloudflare R2 or Local) *
                 </label>
                 <ReactDropzoneUploader
-                  value={imageUrl ? [imageUrl] : []}
-                  onChange={(urls) => urls[0] && setImageUrl(urls[0])}
-                  multiple={false}
-                  label="Drop spare part image here or click to upload"
+                  value={imageUrls}
+                  onChange={(urls) => setImageUrls(urls)}
+                  multiple={true}
+                  label="Drop spare part images here or click to upload (multiple allowed)"
                 />
-                <input
-                  type="url"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  placeholder="OR enter Direct Image URL (https://...)"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-xs font-mono text-slate-800 placeholder:text-slate-400 outline-none transition"
-                />
-                {imageUrl && (
-                  <div className="mt-2 flex items-center gap-3 p-2 rounded-xl bg-slate-50 border border-slate-200">
-                    <div className="relative w-12 h-12 rounded-lg bg-white border overflow-hidden shrink-0">
-                      <img
-                        src={imageUrl}
-                        alt="Preview"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="text-xs text-slate-600 truncate font-mono flex-1">
-                      {imageUrl}
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Compatible Tools Multi-Select */}

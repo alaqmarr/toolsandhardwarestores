@@ -347,7 +347,7 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-800 font-mono text-xs font-bold">
                         <Compass className="w-3.5 h-3.5 text-amber-600" />
                         <span>
-                          {item.latitude.toFixed(4)}, {item.longitude.toFixed(4)}
+                          {(item.latitude ?? 0).toFixed(4)}, {(item.longitude ?? 0).toFixed(4)}
                         </span>
                       </div>
                     </td>

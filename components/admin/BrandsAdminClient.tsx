@@ -3,14 +3,12 @@
 import React, { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import Image from 'next/image'
 import {
   Award,
   Plus,
   Search,
   Edit2,
   Trash2,
-  ExternalLink,
   Check,
   X,
   Package,
@@ -349,7 +347,7 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
                     <td className="py-4 px-4">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-extrabold">
                         <Package className="w-3.5 h-3.5 text-slate-500" />
-                        <span>{item._count.products} Tools</span>
+                        <span>{item._count?.products ?? 0} Tools</span>
                       </span>
                     </td>
                     <td className="py-4 pl-4 pr-6 text-right">
@@ -364,7 +362,7 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
                         </button>
                         <button
                           type="button"
-                          onClick={() => handleDelete(item.id, item.name, item._count.products)}
+                          onClick={() => handleDelete(item.id, item.name, item._count?.products ?? 0)}
                           title="Delete Brand"
                           className="p-2 rounded-xl text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
                         >

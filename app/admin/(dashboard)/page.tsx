@@ -175,11 +175,11 @@ export default async function AdminDashboardPage() {
                     </td>
                     <td className="py-4 px-4">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-bold">
-                        {product.brand.name}
+                        {product.brand?.name || 'Unknown'}
                       </span>
                     </td>
                     <td className="py-4 px-4">
-                      <span className="text-slate-600 font-semibold">{product.category.name}</span>
+                      <span className="text-slate-600 font-semibold">{product.category?.name || 'Unknown'}</span>
                     </td>
                     <td className="py-4 px-4">
                       {product.isFeatured ? (

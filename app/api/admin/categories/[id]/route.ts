@@ -10,9 +10,8 @@ export async function PUT(
   try {
     const session = await getSession()
     if (!session) {
-          revalidatePath('/', 'layout');
-    return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
-        }
+      return NextResponse.json({ error: 'Unauthorized admin access.' }, { status: 401 })
+    }
 
     const { id } = await context.params;
     const body = await req.json();
@@ -34,6 +33,7 @@ export async function PUT(
       },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: "Category updated successfully.",
@@ -41,7 +41,6 @@ export async function PUT(
     });
   } catch (error: any) {
     console.error("Update category error:", error);
-    revalidatePath('/', 'layout');
     return NextResponse.json(
       { error: error?.message || "Failed to update category." },
       { status: 500 },
@@ -56,11 +55,11 @@ export async function DELETE(
   try {
     const session = await getSession();
     if (!session) {
-    //   return NextResponse.json(
-    //     { error: "Unauthorized admin access." },
-    //     { status: 401 },
-    //   );
-        }
+      return NextResponse.json(
+        { error: "Unauthorized admin access." },
+        { status: 401 },
+      );
+    }
 
     const { id } = await context.params;
 
@@ -82,6 +81,7 @@ export async function DELETE(
       where: { id },
     });
 
+    revalidatePath('/', 'layout');
     return NextResponse.json({
       success: true,
       message: "Category deleted successfully.",

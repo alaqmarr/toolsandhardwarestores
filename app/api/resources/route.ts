@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db'
 import path from 'path'
 import fs from 'fs/promises'
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3'
+import { getSession } from '@/lib/auth'
 
 export async function GET(req: NextRequest) {
   try {
@@ -126,6 +127,14 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
     const { searchParams } = new URL(req.url)
     const id = searchParams.get('id')
     if (!id) {

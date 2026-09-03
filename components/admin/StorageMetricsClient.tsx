@@ -6,7 +6,6 @@ import {
   Cloud,
   HardDrive,
   RefreshCw,
-  CheckCircle,
   AlertCircle,
   FileText,
   ExternalLink,
@@ -230,7 +229,7 @@ export default function StorageMetricsClient() {
         </div>
 
         <div className="space-y-5">
-          {data.categoryBreakdown.map((item) => (
+          {(data.categoryBreakdown || []).map((item) => (
             <div key={item.category} className="space-y-2">
               <div className="flex items-center justify-between text-xs font-bold">
                 <span className="text-slate-900">
@@ -277,7 +276,7 @@ export default function StorageMetricsClient() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
-              {data.recentFiles.map((file, idx) => (
+              {(data.recentFiles || []).map((file, idx) => (
                 <tr key={idx} className="hover:bg-slate-50/80 transition">
                   <td className="py-3.5 px-4 font-bold text-slate-900 flex items-center gap-2">
                     <FileText className="w-4 h-4 text-amber-600 shrink-0" />
