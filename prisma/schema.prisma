@@ -40,21 +40,22 @@ model Category {
 }
 
 model Product {
-  id          String         @id
-  name        String
-  slug        String         @unique
-  brandId     String
-  brand       Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  categoryId  String
-  category    Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  description String
-  features    String?
-  images      String
-  videoUrl    String?
-  isFeatured  Boolean        @default(false)
-  spares      ProductSpare[]
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  id             String         @id
+  name           String
+  slug           String         @unique
+  brandId        String
+  brand          Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  categoryId     String
+  category       Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  description    String
+  features       String?
+  specifications String?
+  images         String
+  videoUrl       String?
+  isFeatured     Boolean        @default(false)
+  spares         ProductSpare[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
 }
 
 model SpareCategory {
@@ -141,4 +142,10 @@ model ResourceCatalogue {
   isPublic    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model ScriptRun {
+  id        String   @id
+  ranAt     DateTime @default(now())
+  notes     String?
 }

@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npx prisma db push && tsx prisma/import-powerbilt.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
-    "postinstall": "prisma generate && npx prisma db push"
+    "import:powerbilt": "tsx prisma/import-powerbilt.ts",
+    "postinstall": "prisma generate && npx prisma db push && tsx prisma/import-powerbilt.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

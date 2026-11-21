@@ -148,13 +148,22 @@ export default function ProductDetailClient({
         <div className="lg:col-span-7 space-y-4">
           <div className="w-full h-80 sm:h-[420px] rounded-3xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center relative shadow-md">
             {isVideoActive ? (
-              <iframe
-                src={product.videoUrl || ''}
-                title={product.name}
-                className="w-full h-full object-cover"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              /\.(mp4|webm|mov|m4v)(\?|$)/i.test(product.videoUrl || '') ? (
+                <video
+                  src={product.videoUrl || ''}
+                  controls
+                  playsInline
+                  className="w-full h-full object-contain bg-black"
+                />
+              ) : (
+                <iframe
+                  src={product.videoUrl || ''}
+                  title={product.name}
+                  className="w-full h-full object-cover"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )
             ) : (
               <img
                 src={imageList[activeMediaIndex] || imageList[0]}
