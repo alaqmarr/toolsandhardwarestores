@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
-import { Search, Package, CheckCircle2, ChevronRight, Tag } from 'lucide-react'
+import { Search, Package, ChevronRight, X, Loader2 } from 'lucide-react'
 import SpareModal from './SpareModal'
+import Pagination from './Pagination'
 
 export interface SpareItem {
   id: string
@@ -35,72 +36,157 @@ export interface SpareItem {
 
 interface SparesCatalogClientProps {
   initialSpares: SpareItem[]
+  initialTotal: number
+  pageSize?: number
   topCategories: any[]
   primaryPhone: string
 }
 
 export default function SparesCatalogClient({
   initialSpares,
+  initialTotal,
+  pageSize = 24,
   topCategories,
   primaryPhone,
 }: SparesCatalogClientProps) {
+  const [spares, setSpares] = useState<SpareItem[]>(initialSpares)
+  const [total, setTotal] = useState<number>(initialTotal)
+  const [allCount] = useState<number>(initialTotal)
+  const [page, setPage] = useState<number>(1)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTopCatId, setSelectedTopCatId] = useState<string | null>(null)
   const [selectedSubCatId, setSelectedSubCatId] = useState<string | null>(null)
   const [activeModalSpare, setActiveModalSpare] = useState<SpareItem | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  const gridTopRef = useRef<HTMLDivElement>(null)
+  const abortRef = useRef<AbortController | null>(null)
+  const didMountRef = useRef<boolean>(false)
+
+  const totalPages = Math.max(1, Math.ceil(total / pageSize))
 
   const activeTopCategory = useMemo(() => {
     if (!selectedTopCatId) return null
     return topCategories.find((c) => c.id === selectedTopCatId) || null
   }, [selectedTopCatId, topCategories])
 
-  const filteredSpares = useMemo(() => {
-    return initialSpares.filter((spare) => {
-      // Top category match
-      if (selectedTopCatId) {
-        const matchesTop =
-          spare.spareCategory?.id === selectedTopCatId ||
-          spare.spareCategory?.parent?.id === selectedTopCatId
-        if (!matchesTop) return false
-      }
-      // Subcategory match
-      if (selectedSubCatId) {
-        if (spare.spareCategory?.id !== selectedSubCatId) return false
-      }
-      // Search match
-      if (searchQuery.trim()) {
-        const tokens = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean)
-        const compatibleText = spare.products
-          .map((x) => `${x.product.name} ${x.product.brand?.name || ''}`)
-          .join(' ')
-        const fullText = [
-          spare.name,
-          spare.description || '',
-          spare.spareCategory?.name || '',
-          compatibleText,
-        ]
-          .join(' ')
-          .toLowerCase()
+  const fetchSpares = useCallback(
+    async (opts: {
+      q: string
+      topCat: string | null
+      subCat: string | null
+      page: number
+      scrollToTop?: boolean
+    }) => {
+      abortRef.current?.abort()
+      const controller = new AbortController()
+      abortRef.current = controller
 
-        if (!tokens.every((token) => fullText.includes(token))) return false
+      setLoading(true)
+      try {
+        const params = new URLSearchParams()
+        if (opts.q.trim()) params.set('q', opts.q.trim())
+        if (opts.topCat) params.set('topCat', opts.topCat)
+        if (opts.subCat) params.set('subCat', opts.subCat)
+        params.set('page', String(opts.page))
+        params.set('limit', String(pageSize))
+
+        const res = await fetch(`/api/catalog/spares?${params.toString()}`, {
+          signal: controller.signal,
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setSpares(data.items || [])
+          setTotal(data.total ?? 0)
+          setPage(data.page ?? opts.page)
+          if (opts.scrollToTop) {
+            gridTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }
+      } catch (err: any) {
+        if (err?.name !== 'AbortError') {
+          console.error('Failed to query spares:', err)
+        }
+      } finally {
+        if (abortRef.current === controller) {
+          setLoading(false)
+        }
       }
-      return true
+    },
+    [pageSize]
+  )
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true
+      return
+    }
+    const timer = setTimeout(() => {
+      fetchSpares({
+        q: searchQuery,
+        topCat: selectedTopCatId,
+        subCat: selectedSubCatId,
+        page: 1,
+      })
+    }, 250)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery])
+
+  const handleCategoryChange = (nextTopCat: string | null, nextSubCat: string | null) => {
+    setSelectedTopCatId(nextTopCat)
+    setSelectedSubCatId(nextSubCat)
+    setPage(1)
+    fetchSpares({
+      q: searchQuery,
+      topCat: nextTopCat,
+      subCat: nextSubCat,
+      page: 1,
     })
-  }, [initialSpares, selectedTopCatId, selectedSubCatId, searchQuery])
+  }
+
+  const handlePageChange = (nextPage: number) => {
+    setPage(nextPage)
+    fetchSpares({
+      q: searchQuery,
+      topCat: selectedTopCatId,
+      subCat: selectedSubCatId,
+      page: nextPage,
+      scrollToTop: true,
+    })
+  }
 
   return (
-    <div className="space-y-8">
-      {/* Search Bar */}
-      <div className="max-w-xl">
-        <div className="relative">
+    <div ref={gridTopRef} className="space-y-8 scroll-mt-24">
+      {/* Search Bar & Count */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="relative w-full max-w-xl">
           <input
             type="text"
-            placeholder="Search spare parts (e.g. Armature for Bosch 11E, Rotor, Brushes)..."
+            placeholder="Search spare parts (e.g. PBT-ED-6RF, Armature, Switch, Carbon Brush)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border border-slate-300 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-500 shadow-sm"
+            className="w-full bg-white border border-slate-300 rounded-xl py-3 pl-10 pr-10 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-500 shadow-sm"
           />
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5 pointer-events-none" />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-3 text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer"
+              title="Clear search"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+          {loading && <Loader2 className="w-4 h-4 text-red-600 animate-spin" />}
+          <span>
+            <strong className="text-slate-900">{total.toLocaleString()}</strong> spares found
+            {totalPages > 1 ? ` • Page ${page} of ${totalPages}` : ''}
+          </span>
         </div>
       </div>
 
@@ -109,28 +195,22 @@ export default function SparesCatalogClient({
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
-            onClick={() => {
-              setSelectedTopCatId(null)
-              setSelectedSubCatId(null)
-            }}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition border ${
+            onClick={() => handleCategoryChange(null, null)}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition border cursor-pointer ${
               !selectedTopCatId
                 ? 'bg-red-600 text-white border-red-600 shadow-2xs'
                 : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
             }`}
           >
-            All Spares ({initialSpares.length})
+            All Spares ({allCount.toLocaleString()})
           </button>
 
           {topCategories.map((cat) => (
             <button
               key={cat.id}
               type="button"
-              onClick={() => {
-                setSelectedTopCatId(cat.id)
-                setSelectedSubCatId(null)
-              }}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition border ${
+              onClick={() => handleCategoryChange(cat.id, null)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition border cursor-pointer ${
                 selectedTopCatId === cat.id
                   ? 'bg-red-600 text-white border-red-600 shadow-2xs'
                   : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
@@ -147,8 +227,8 @@ export default function SparesCatalogClient({
             <span className="text-xs text-slate-500 font-semibold mr-1">Subcategory:</span>
             <button
               type="button"
-              onClick={() => setSelectedSubCatId(null)}
-              className={`px-3 py-1 rounded-lg text-xs font-bold transition border ${
+              onClick={() => handleCategoryChange(selectedTopCatId, null)}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition border cursor-pointer ${
                 !selectedSubCatId
                   ? 'bg-red-50 text-red-900 border-red-300'
                   : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
@@ -160,8 +240,8 @@ export default function SparesCatalogClient({
               <button
                 key={sub.id}
                 type="button"
-                onClick={() => setSelectedSubCatId(sub.id)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition border ${
+                onClick={() => handleCategoryChange(selectedTopCatId, sub.id)}
+                className={`px-3 py-1 rounded-lg text-xs font-bold transition border cursor-pointer ${
                   selectedSubCatId === sub.id
                     ? 'bg-red-50 text-red-900 border-red-300'
                     : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
@@ -175,7 +255,7 @@ export default function SparesCatalogClient({
       </div>
 
       {/* Spares Grid */}
-      {filteredSpares.length === 0 ? (
+      {spares.length === 0 && !loading ? (
         <div className="bg-white rounded-2xl p-12 text-center border border-slate-200 space-y-3 shadow-sm">
           <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto text-slate-500">
             <Package className="w-6 h-6" />
@@ -186,8 +266,12 @@ export default function SparesCatalogClient({
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredSpares.map((spare) => {
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 transition-opacity duration-150 ${
+            loading ? 'opacity-60' : 'opacity-100'
+          }`}
+        >
+          {spares.map((spare) => {
             let imageList: string[] = []
             try {
               imageList = JSON.parse(spare.images)
@@ -207,6 +291,7 @@ export default function SparesCatalogClient({
                     <img
                       src={mainImg}
                       alt={spare.name}
+                      loading="lazy"
                       className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -226,9 +311,7 @@ export default function SparesCatalogClient({
 
                 <div className="p-4 pt-0 space-y-3">
                   <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
-                    <span className="text-slate-600 font-medium">
-                      Compatible Tools:
-                    </span>
+                    <span className="text-slate-600 font-medium">Compatible Tools:</span>
                     <span className="font-extrabold text-slate-900">
                       {spare.products.length} Models
                     </span>
@@ -261,6 +344,16 @@ export default function SparesCatalogClient({
           })}
         </div>
       )}
+
+      {/* Pagination */}
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        totalItems={total}
+        pageSize={pageSize}
+        itemLabel="spare parts"
+        onPageChange={handlePageChange}
+      />
 
       {/* Interactive Modal for Spare Fitment */}
       {activeModalSpare && (

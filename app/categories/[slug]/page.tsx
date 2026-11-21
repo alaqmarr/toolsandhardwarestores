@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, Package, Wrench, ShieldCheck, Filter } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
-import ProductCard from '@/components/ProductCard'
+import { queryProducts, DEFAULT_PAGE_SIZE } from '@/lib/catalogQueries'
+import ProductCatalogClient from '@/components/ProductCatalogClient'
 import ShareButton from '@/components/ShareButton'
 import type { Metadata } from 'next'
 
@@ -75,17 +76,17 @@ export default async function CategoryDetailPage({
     notFound()
   }
 
-  const products = await prisma.product.findMany({
-    where: { categoryId: category.id },
-    include: {
-      brand: true,
-      category: true,
-    },
-    orderBy: { name: 'asc' },
-  })
+  const [initialCatalog, categoryBrands] = await Promise.all([
+    queryProducts({ category: category.slug, page: 1, limit: DEFAULT_PAGE_SIZE, sort: 'featured' }),
+    prisma.brand.findMany({
+      where: { products: { some: { categoryId: category.id } } },
+      select: { name: true, slug: true },
+      orderBy: [{ isCore: 'desc' }, { name: 'asc' }],
+    }),
+  ])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-10 space-y-10 pb-24">
       {/* Breadcrumbs & Share Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-slate-500 border-b border-slate-200 pb-4">
         <div className="flex items-center gap-2 flex-wrap">
@@ -137,35 +138,15 @@ export default async function CategoryDetailPage({
 
 
 
-      {/* Product Grid */}
-      {products.length === 0 ? (
-        <div className="bg-white rounded-2xl p-12 text-center border border-slate-200 space-y-3 shadow-sm">
-          <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto text-slate-500">
-            <Package className="w-6 h-6" />
-          </div>
-          <h3 className="text-lg font-bold text-slate-900">No products found</h3>
-          <p className="text-sm text-slate-600">
-            No items match the selected brand filter in this category. Try selecting &quot;All
-            Brands&quot;.
-          </p>
-          <Link
-            href={`/categories/${category.slug}`}
-            className="inline-block mt-2 text-xs font-bold text-red-600 hover:underline"
-          >
-            Clear brand filter
-          </Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((prod) => (
-            <ProductCard
-              key={prod.id}
-              product={prod}
-              primaryPhone={settings.primaryPhone}
-            />
-          ))}
-        </div>
-      )}
+      {/* Search, Brand Filter & Paginated Product Grid */}
+      <ProductCatalogClient
+        initialItems={initialCatalog.items}
+        initialTotal={initialCatalog.total}
+        pageSize={DEFAULT_PAGE_SIZE}
+        brands={categoryBrands}
+        lockedCategorySlug={category.slug}
+        primaryPhone={settings.primaryPhone}
+      />
     </div>
   )
 }

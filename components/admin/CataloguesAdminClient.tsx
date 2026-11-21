@@ -130,7 +130,7 @@ export default function CataloguesAdminClient() {
   })
 
   return (
-    <div className="p-6 sm:p-10 space-y-8 max-w-7xl mx-auto">
+    <div className="p-6 sm:p-10 space-y-8 w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>

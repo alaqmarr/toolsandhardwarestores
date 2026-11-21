@@ -24,7 +24,7 @@ export default async function AdminDashboardLayout({
         adminEmail={session?.email || 'admin@toolsandhardwarestores.com'}
       />
       <main className="flex-1 min-w-0 overflow-y-auto p-6 sm:p-10">
-        <div className="max-w-7xl mx-auto">{children}</div>
+        <div className="w-full">{children}</div>
       </main>
     </div>
   )

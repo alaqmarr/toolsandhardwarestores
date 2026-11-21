@@ -49,7 +49,7 @@ export default async function HomePage() {
     <div className="space-y-16 pb-20">
       {/* 1. HERO SECTION */}
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden min-h-[620px] lg:min-h-[700px] flex items-center justify-center rounded-3xl mx-3 sm:mx-6 lg:mx-8 mt-2 mb-10 shadow-2xl border border-slate-800 bg-slate-950">
+      <section className="relative overflow-hidden min-h-[620px] lg:min-h-[700px] flex items-center justify-center w-full mb-10 shadow-2xl border-b border-slate-800 bg-slate-950">
         {/* Full Background Image with Cinematic Industrial Overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -64,7 +64,7 @@ export default async function HomePage() {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 w-full text-center flex flex-col items-center">
+        <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12 py-16 sm:py-20 text-center flex flex-col items-center">
           <div className="space-y-8 flex flex-col items-center">
             {/* Rating & Dispatch Pill */}
             <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-slate-900/85 border border-slate-700/80 backdrop-blur-md px-5 py-2.5 rounded-full shadow-lg">
@@ -144,7 +144,7 @@ export default async function HomePage() {
 
       {/* 2. INFINITE AUTO-SCROLLING BRANDS SLIDER (WITH SUBTLE ICE BLUE GRADIENT) */}
       <section className="overflow-hidden py-12 bg-gradient-to-r from-white via-blue-50/60 to-white border-y border-blue-200/60 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 flex items-center justify-between">
+        <div className="w-full px-4 sm:px-6 lg:px-10 mb-8 flex items-center justify-between">
           <div className="text-xs font-black tracking-widest uppercase text-slate-400">
             AUTHORIZED BRANDS & PROFESSIONAL MANUFACTURERS
           </div>
@@ -181,7 +181,7 @@ export default async function HomePage() {
       </section>
 
       {/* 3. TOOL CATEGORIES SHOWCASE WITH SUBTLE BLUE GRADIENT WRAPPER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 rounded-3xl bg-gradient-to-br from-white via-blue-50/45 to-slate-50 border border-blue-100/80 shadow-xs my-8">
+      <section className="w-full px-4 sm:px-6 lg:px-10 py-10 bg-gradient-to-br from-white via-blue-50/45 to-slate-50 border-y border-blue-100/80 shadow-xs my-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-wider text-red-600 mb-1">
@@ -240,7 +240,7 @@ export default async function HomePage() {
       </section>
 
       {/* 4. FEATURED PRODUCTS & HEAVY MACHINERY WITH SUBTLE BLUE GRADIENT WRAPPER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 rounded-3xl bg-gradient-to-br from-slate-50 via-blue-50/50 to-white border border-blue-100/80 shadow-xs my-8">
+      <section className="w-full px-4 sm:px-6 lg:px-10 py-10 bg-gradient-to-br from-slate-50 via-blue-50/50 to-white border-y border-blue-100/80 shadow-xs my-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-wider text-red-600 mb-1">
@@ -271,7 +271,7 @@ export default async function HomePage() {
       </section>
 
       {/* 5. GENUINE SPARES & ARMATURES HIGHLIGHT BANNER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+      <section className="w-full px-4 sm:px-6 lg:px-10 my-8">
         <div className="bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 rounded-3xl border border-red-500/40 p-8 sm:p-12 shadow-xl relative overflow-hidden text-white">
           <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none" />
 

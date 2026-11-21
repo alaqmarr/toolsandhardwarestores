@@ -45,24 +45,23 @@ export default function ProductCard({
   })
 
   return (
-    <div className="glass-card bg-gradient-to-b from-white to-blue-50/20 rounded-2xl overflow-hidden flex flex-col group h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-300">
+    <div className="glass-card bg-gradient-to-b from-white to-blue-50/20 rounded-2xl overflow-hidden flex flex-col group h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-red-300">
       {/* Product Image Box */}
-      <div className="relative h-56 overflow-hidden bg-slate-100">
-        <Link href={`/products/${product.slug}`} className="block w-full h-full">
+      <div className="relative h-56 overflow-hidden bg-white border-b border-slate-100 flex items-center justify-center p-4">
+        <Link href={`/products/${product.slug}`} className="w-full h-full flex items-center justify-center">
           <img
             src={mainImage}
             alt={`${product.name} - ${product.brand.name} Wholesale Industrial Tool Dealer`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
         </Link>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-80 pointer-events-none" />
 
         {/* Top Brand Badge */}
         <div className="absolute top-3 left-3 z-10">
           <Link
             href={`/brands/${product.brand.slug}`}
-            className="bg-slate-900/90 hover:bg-slate-950 text-red-400 text-[11px] font-extrabold px-2.5 py-1 rounded-lg border border-red-500/30 backdrop-blur-md shadow-sm transition"
+            className="bg-slate-900/90 hover:bg-slate-950 text-red-400 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-red-500/30 backdrop-blur-md shadow-sm transition uppercase tracking-wider"
           >
             {product.brand.name}
           </Link>
@@ -71,9 +70,15 @@ export default function ProductCard({
 
       {/* Card Content */}
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-        <div className="space-y-2">
+        <div className="space-y-1.5">
+          <Link
+            href={`/categories/${product.category.slug}`}
+            className="inline-block text-[10px] font-extrabold uppercase tracking-wider text-red-600 hover:underline"
+          >
+            {product.category.name}
+          </Link>
           <Link href={`/products/${product.slug}`} className="block group/title">
-            <h3 className="text-lg font-bold text-slate-900 group-hover/title:text-red-600 transition-colors line-clamp-2 leading-snug">
+            <h3 className="text-base font-bold text-slate-900 group-hover/title:text-red-600 transition-colors line-clamp-2 leading-snug">
               {product.name}
             </h3>
           </Link>

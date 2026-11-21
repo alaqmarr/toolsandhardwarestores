@@ -20,10 +20,16 @@ import { prisma } from '@/lib/db'
 export const revalidate = 60
 
 export default async function AboutPage() {
-  const settings = await getContactSettings()
-  const brands = await prisma.brand.findMany({
-    orderBy: { name: 'asc' },
-  })
+  const [settings, brands, categoryCount, productCount, spareCount] = await Promise.all([
+    getContactSettings(),
+    prisma.brand.findMany({
+      include: { _count: { select: { products: true } } },
+      orderBy: [{ isCore: 'desc' }, { name: 'asc' }],
+    }),
+    prisma.category.count(),
+    prisma.product.count(),
+    prisma.spare.count(),
+  ])
 
   return (
     <div className="space-y-16 pb-20">
@@ -31,8 +37,8 @@ export default async function AboutPage() {
       <section className="relative pt-12 pb-16 border-b border-slate-200 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
+        <div className="w-full px-4 sm:px-6 lg:px-10 space-y-8">
+          <div className="max-w-4xl space-y-4">
             <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 px-3 py-1.5 rounded-full text-xs font-bold text-red-800">
               <Star className="w-3.5 h-3.5 fill-red-500 text-red-500" />
               <span>4.9★ RATED WHOLESALE & MULTI-BRAND RETAIL ESTABLISHMENT</span>
@@ -47,11 +53,30 @@ export default async function AboutPage() {
               machinery, ringsaw cutters, and genuine factory spares.
             </p>
           </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+              <div className="text-2xl sm:text-3xl font-black text-red-600">{productCount.toLocaleString()}+</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mt-1">Industrial Tools & Models</div>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+              <div className="text-2xl sm:text-3xl font-black text-slate-900">{spareCount.toLocaleString()}+</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mt-1">Genuine Spare Parts</div>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+              <div className="text-2xl sm:text-3xl font-black text-slate-900">{brands.length}</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mt-1">Authorized Brands</div>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+              <div className="text-2xl sm:text-3xl font-black text-slate-900">{categoryCount}</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mt-1">Equipment Categories</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 2. STORE OVERVIEW & HIGHLIGHTS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white rounded-2xl p-6 border border-slate-200 space-y-3 shadow-sm hover:shadow-md transition">
             <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center">
@@ -117,18 +142,27 @@ export default async function AboutPage() {
           </div>
 
           {/* Brands Showcase Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-200">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 pt-4 border-t border-slate-200">
             {brands.map((b) => (
               <Link
                 key={b.id}
                 href={`/brands/${b.slug}`}
-                className="bg-slate-50 hover:bg-red-50/50 border border-slate-200 hover:border-red-500/30 rounded-2xl p-4 flex flex-col items-center justify-center gap-2 text-center transition group"
+                className="bg-slate-50 hover:bg-red-50/50 border border-slate-200 hover:border-red-500/40 rounded-2xl p-5 flex flex-col items-center justify-center gap-3 text-center transition group"
               >
+                {b.image && (
+                  <div className="h-12 w-full flex items-center justify-center">
+                    <img
+                      src={b.image}
+                      alt={b.name}
+                      className="max-h-full max-w-[80%] object-contain group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                )}
                 <div className="font-extrabold text-slate-900 group-hover:text-red-600 text-sm">
                   {b.name}
                 </div>
-                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 group-hover:text-red-500">
-                  {b.isCore ? 'Core Partner' : 'Brand Dealer'}
+                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-500 group-hover:text-red-500">
+                  {b.isCore ? 'Core Partner' : 'Brand Dealer'} • {b._count.products} Models
                 </div>
               </Link>
             ))}
@@ -136,7 +170,7 @@ export default async function AboutPage() {
         </div>
 
         {/* SECTION 3: WHOLESALE BENCHMARKS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           <div className="bg-white rounded-2xl p-6 border border-slate-200 space-y-4 shadow-sm hover:shadow-md transition">
             <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center">
               <ShieldCheck className="w-6 h-6 text-red-500" />
@@ -190,7 +224,7 @@ export default async function AboutPage() {
       </section>
 
       {/* 5. BOTTOM CTA BANNER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full px-4 sm:px-6 lg:px-10">
         <div className="bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6 text-white shadow-xl">
           <div className="space-y-2 max-w-xl">
             <h3 className="text-2xl sm:text-3xl font-black text-white">

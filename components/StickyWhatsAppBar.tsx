@@ -29,8 +29,8 @@ export default function StickyWhatsAppBar({
   })
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl py-3 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl py-3 px-4 sm:px-6 lg:px-10">
+      <div className="w-full flex items-center justify-between gap-4">
         {/* Item summary */}
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">

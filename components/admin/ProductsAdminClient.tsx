@@ -19,6 +19,7 @@ import {
   Video,
 } from 'lucide-react'
 import ReactDropzoneUploader from '@/components/ReactDropzoneUploader'
+import Pagination from '@/components/Pagination'
 import ConfirmDialog from './ConfirmDialog'
 
 interface BrandItem {
@@ -76,6 +77,9 @@ export default function ProductsAdminClient({
   const [selectedBrand, setSelectedBrand] = useState('ALL')
   const [selectedCategory, setSelectedCategory] = useState('ALL')
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [currentPage, setCurrentPage] = useState(1)
+  const [sparePickerQuery, setSparePickerQuery] = useState('')
+  const adminPageSize = 25
 
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -241,6 +245,22 @@ export default function ProductsAdminClient({
     })
   }, [products, searchQuery, selectedBrand, selectedCategory])
 
+  const totalAdminPages = Math.max(1, Math.ceil(filteredProducts.length / adminPageSize))
+  const safePage = Math.min(currentPage, totalAdminPages)
+  const paginatedProducts = useMemo(() => {
+    const start = (safePage - 1) * adminPageSize
+    return filteredProducts.slice(start, start + adminPageSize)
+  }, [filteredProducts, safePage])
+
+  const filteredModalSpares = useMemo(() => {
+    const q = sparePickerQuery.trim().toLowerCase()
+    const matching = q ? spares.filter((s) => s.name.toLowerCase().includes(q)) : spares
+    const selectedSet = new Set(selectedSpareIds)
+    const selectedFirst = spares.filter((s) => selectedSet.has(s.id) && (!q || s.name.toLowerCase().includes(q)))
+    const rest = matching.filter((s) => !selectedSet.has(s.id))
+    return [...selectedFirst, ...rest].slice(0, 60)
+  }, [spares, sparePickerQuery, selectedSpareIds])
+
   const toggleSelection = (id: string) => {
     const newSet = new Set(selectedIds)
     if (newSet.has(id)) newSet.delete(id)
@@ -318,7 +338,10 @@ export default function ProductsAdminClient({
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setCurrentPage(1)
+              }}
               placeholder="Search by name, ID, or brand..."
               className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
             />
@@ -328,7 +351,10 @@ export default function ProductsAdminClient({
           <div>
             <select
               value={selectedBrand}
-              onChange={(e) => setSelectedBrand(e.target.value)}
+              onChange={(e) => {
+                setSelectedBrand(e.target.value)
+                setCurrentPage(1)
+              }}
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-700 bg-white outline-none transition"
             >
               <option value="ALL">All Brands ({brands.length})</option>
@@ -344,7 +370,10 @@ export default function ProductsAdminClient({
           <div>
             <select
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={(e) => {
+                setSelectedCategory(e.target.value)
+                setCurrentPage(1)
+              }}
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-700 bg-white outline-none transition"
             >
               <option value="ALL">All Categories ({categories.length})</option>
@@ -420,7 +449,7 @@ export default function ProductsAdminClient({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
-                {filteredProducts.map((item) => (
+                {paginatedProducts.map((item) => (
                   <tr key={item.id} className={`hover:bg-slate-50/80 transition ${selectedIds.has(item.id) ? 'bg-slate-50' : ''}`}>
                     <td className="py-4 pl-6 pr-2">
                       <input
@@ -445,6 +474,7 @@ export default function ProductsAdminClient({
                               <img
                                 src={imgUrl}
                                 alt={item.name}
+                                loading="lazy"
                                 className="w-full h-full object-contain p-1"
                               />
                             )
@@ -524,6 +554,15 @@ export default function ProductsAdminClient({
           </div>
         )}
       </div>
+
+      <Pagination
+        page={safePage}
+        totalPages={totalAdminPages}
+        totalItems={filteredProducts.length}
+        pageSize={adminPageSize}
+        itemLabel="products"
+        onPageChange={(p) => setCurrentPage(p)}
+      />
 
       {/* CREATE / EDIT MODAL */}
       {isModalOpen && (
@@ -687,8 +726,15 @@ export default function ProductsAdminClient({
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Link Compatible Spare Parts & Accessories ({selectedSpareIds.length} selected)
                 </label>
+                <input
+                  type="text"
+                  value={sparePickerQuery}
+                  onChange={(e) => setSparePickerQuery(e.target.value)}
+                  placeholder="Filter spares by name or model code (showing up to 60)..."
+                  className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-amber-500 text-xs font-semibold text-slate-800 outline-none transition"
+                />
                 <div className="max-h-36 overflow-y-auto p-3 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
-                  {spares.map((sp) => {
+                  {filteredModalSpares.map((sp) => {
                     const isChecked = selectedSpareIds.includes(sp.id)
                     return (
                       <label

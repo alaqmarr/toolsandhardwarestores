@@ -1,0 +1,1544 @@
+{
+  "source": "https://www.dongchengtool.com/",
+  "brand": {
+    "name": "DongCheng",
+    "slug": "dongcheng",
+    "image": "https://www.dongchengtool.com/_nuxt/img/logo.c0f8da1.png",
+    "isCore": true,
+    "isSpecialty": false,
+    "description": "DongCheng is a leading global manufacturer of professional electric power tools, 20V MAX brushless cordless equipment, rotary & percussion hammers, angle grinders, and masonry machinery."
+  },
+  "products": [
+    {
+      "model": "DZC45",
+      "name": "DongCheng DZC45 Electric Rotary Hammer",
+      "subtitle": "Electric Rotary Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646635073146",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732670843905/DZC45.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732670848829/DZC45.jpg"
+      ],
+      "features": [
+        "1. Safety clutch function;",
+        "2. Soft start, Electronic constant speed control;",
+        "3. 2-Mode operation, rotary hammer and demolition;"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1500W",
+        "IMPACT ENERGY": "14.0J",
+        "NO-LOAD SPEED": "0-305/min",
+        "RATED IMPACT FREQUENCY": "1370-2700/min",
+        "MAX. DRILLING CAPACITY": "Concrete Φ 45mm",
+        "NET WEIGHT": "8.2kg"
+      },
+      "packing": "Auxiliary Handle, Chuck Oil, Carbon Brush, Plastic Case Packing",
+      "isFeatured": true
+    },
+    {
+      "model": "DZG10",
+      "name": "DongCheng DZG10 Percussion Hammer",
+      "subtitle": "Percussion Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646897210349",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671316887/DZG10.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671322350/DZG10.jpg"
+      ],
+      "features": [
+        "1. 1500W super power motor;",
+        "2. Electronic constant speed control;",
+        "3.40 diameter cylinder delivers 16.0J impact energy;",
+        "4.Carbon brush remaining warning light."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1500W",
+        "IMPACT ENERGY": "16.0J",
+        "RATED IMPACT FREQUENCY": "900-1890/min",
+        "NET WEIGHT": "10.4kg"
+      },
+      "packing": "Grease, Auxiliary Handle, Hex Wrench, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZG02-15",
+      "name": "DongCheng DZG02-15 Percussion Hammer",
+      "subtitle": "Percussion Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646898679192",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691056679539/DZG02-15.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691056686867/DZG02-15.jpg"
+      ],
+      "features": [
+        "1. Double insulated;",
+        "2. Large trigger switch;"
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1010W",
+        "IMPACT ENERGY": "40.7J",
+        "RATED IMPACT FREQUENCY": "1400/min",
+        "NET WEIGHT": "16.0kg"
+      },
+      "packing": "Oiler, Wrench, Hex Wrench, Hex Wrench, Carbon Brush, Iron Carrying Case",
+      "isFeatured": false
+    },
+    {
+      "model": "DZJ02-13",
+      "name": "DongCheng DZJ02-13 Electric Impact Drill",
+      "subtitle": "Electric Impact Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1643178508429",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732673248899/DZJ02-13.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732673253473/DZJ02-13.jpg"
+      ],
+      "features": [
+        "1. Half structure;",
+        "2. Two functions: drill and impact Drill;",
+        "3. Adjustable speed, Forward and reverse rotation."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "500W",
+        "NO-LOAD SPEED": "0-2600/min",
+        "RATED IMPACT FREQUENCY": "0-41600/min",
+        "MAX. DRILLING CAPACITY": "Steel： Φ10mm",
+        "CONCRETE": "Φ13mm",
+        "WOOD": "Φ25mm",
+        "NET WEIGHT": "2.0kg"
+      },
+      "packing": "Auxiliary Handle, Depth Gauge, Chuck Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DJZ10A",
+      "name": "DongCheng DJZ10A Electric Drill",
+      "subtitle": "Electric Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646623703193",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732673659440/DJZ10A.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732673663431/DJZ10A.jpg"
+      ],
+      "features": [
+        "Adjustable speed, Forward and reverse rotation."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "300W",
+        "NO-LOAD SPEED": "0-3000/min",
+        "MAX. DRILLING CAPACITY": "Steel： Φ10mm",
+        "WOOD": "Φ18mm",
+        "NET WEIGHT": "1.5kg"
+      },
+      "packing": "Twist Drill Bit (3.2mm), Chuck Wrench (Key Chuck Optional), Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSM04-100A",
+      "name": "DongCheng DSM04-100A Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732607980223/DSM03-100A.jpg"
+      ],
+      "features": [
+        "Compact ergonomic 100mm angle grinder",
+        "Spindle lock for quick wheel replacement",
+        "Rear toggle switch & external carbon brush access"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "560W",
+        "RATED SPEED": "13000 /min",
+        "MAX. WHEEL DIA.": "Φ100mm",
+        "SPINDLE THREAD": "M10",
+        "NET WEIGHT": "1.7kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Wheel Guard, Carbon Brush",
+      "isFeatured": true
+    },
+    {
+      "model": "DSM08-100",
+      "name": "DongCheng DSM08-100 Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732600355723/DSM09-100S.jpg"
+      ],
+      "features": [
+        "Heavy-duty 800W motor for metal cutting & grinding",
+        "Lightweight 1.6kg compact housing",
+        "Spindle lock & adjustable wheel guard"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "800W",
+        "RATED SPEED": "13000 /min",
+        "MAX. WHEEL DIA.": "Φ100mm",
+        "SPINDLE THREAD": "M10",
+        "NET WEIGHT": "1.6kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Wheel Guard, Carbon Brush",
+      "isFeatured": false
+    },
+    {
+      "model": "DSM180A",
+      "name": "DongCheng DSM180A Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646374149794",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732604936962/DSM180A.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732604960467/DSM180A.jpg"
+      ],
+      "features": [
+        "1. 2200W high quality motor with excellent heat-resistance",
+        "2. Labyrinth dustproof structure：protect the drive gear and bearings from contamination for longer tool life",
+        "3. Spindle lock, Large trigger switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "2200W",
+        "NO-LOAD SPEED": "8300/min",
+        "MAX. WHEEL DIA": "Φ180mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "5.0kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": true
+    },
+    {
+      "model": "DSM230A",
+      "name": "DongCheng DSM230A Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646376445808",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732606073756/DSM230A.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732606079229/DSM230A.jpg"
+      ],
+      "features": [
+        "1. 2200W high quality motor with excellent heat-resistance",
+        "2. Labyrinth dustproof structure：protect the drive gear and bearings from contamination for longer tool life",
+        "3. Spindle lock, Large trigger switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "2200W",
+        "NO-LOAD SPEED": "6600/min",
+        "MAX. WHEEL DIA": "Φ230mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "5.0kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSP02-180S",
+      "name": "DongCheng DSP02-180S Polisher",
+      "subtitle": "Polisher",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646380367949",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732608973212/DSP02-180S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732608976788/DSP02-180S.jpg"
+      ],
+      "features": [
+        "1. Electronic constant speed control;",
+        "2. Vertical structure;",
+        "3. Adjustable speed."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "950W",
+        "NO-LOAD SPEED": "600-2100/min",
+        "WHEEL SIZE": "φ180mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "3.6kg"
+      },
+      "packing": "Wool Bonnet, Wrench, Auxiliary Handle, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSP04-180",
+      "name": "DongCheng DSP04-180 Polisher",
+      "subtitle": "Polisher",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646380828903",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732609172502/DSP04-180.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732609176217/DSP04-180.jpg"
+      ],
+      "features": [
+        "1. 1400W High Power;",
+        "2. Electronic constant speed, maintains constant speed under load;",
+        "3. Adjustable speed. D-shape auxiliary handle."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1400W",
+        "NO-LOAD SPEED": "690-3800/min",
+        "WHEEL SIZE": "φ180mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "3.4kg"
+      },
+      "packing": "Wool Bonnet, Hex Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSS125B",
+      "name": "DongCheng DSS125B Straight Polisher",
+      "subtitle": "Straight Polisher",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646459523802",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732672941967/DSS125B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732672945179/DSS125B.jpg"
+      ],
+      "features": [
+        "1. Safety guard design",
+        "2. Steady operation"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "710W",
+        "NO-LOAD SPEED": "5300/min",
+        "MAX.WHEEL DIAMETER": "Φ125mm",
+        "HOLE DIAMETER OF WHEEL": "Φ20mm",
+        "NET WEIGHT": "4.3kg"
+      },
+      "packing": "Wrench, Sleeve, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSA125",
+      "name": "DongCheng DSA125 Random Orbit Sander",
+      "subtitle": "Random Orbit Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646461172334",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610642140/DSA125.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610647950/DSA125.jpg"
+      ],
+      "features": [
+        "1. 6-speed electronic gear shift;",
+        "2. Whole rubberized body",
+        "3. Large 3mm random orbit action;",
+        "4. Efficient through- the-pad dust collection system."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "300W",
+        "ORBITS FREQUENCY": "4000-12000/min",
+        "PAD SIZE": "Φ125mm",
+        "NET WEIGHT": "1.4kg"
+      },
+      "packing": "Dust Bag, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSA02-125",
+      "name": "DongCheng DSA02-125 Random Orbit Sander",
+      "subtitle": "Random Orbit Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646461599426",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610942666/DSA02-125.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610947393/DSA02-125.jpg"
+      ],
+      "features": [
+        "1. Advanced efficient collection system: dust collection efficiency increased by 10%",
+        "2. 380W powerful motor: sanding efficiency increased by 15%.",
+        "3. Whole rubberized body comfortable to hold",
+        "4. 2.7mm large random orbit action for high removal rate.",
+        "5. 6 speed adjustmen: meeting different working conditions",
+        "6. 139mm low-profile body: delivering optimal tool maneuverability.",
+        "7. External vacuum cleaner connector (inner Diameter: Φ32mm)"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "380W",
+        "ORBITS FREQUENCY": "8000-12800/min",
+        "PAD SIZE": "Φ125mm",
+        "NET WEIGHT": "1.5kg"
+      },
+      "packing": "Dust Bag, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSB03-100S",
+      "name": "DongCheng DSB03-100S Orbital Sander",
+      "subtitle": "Orbital Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646462477082",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732666997362/DSB03-100S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732667001621/DSB03-100S.jpg"
+      ],
+      "features": [
+        "1. Rubber-covered body, comfortable to grip;",
+        "2. Upgraded efficiency and lifetime: multiple parts improvements makes high durability;",
+        "3. Low vibration design: improve comfort at the source."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "240W",
+        "ORBITS FREQUENCY": "14000/min",
+        "PAD SIZE": "100x110mm",
+        "NET WEIGHT": "1.2kg"
+      },
+      "packing": "Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DJG02-355",
+      "name": "DongCheng DJG02-355 Electric Cut-Off Machine",
+      "subtitle": "Electric Cut-Off Machine",
+      "source_url": "https://www.dongchengtool.com/product/detail/1643245715493",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057612054/DJG02-355.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057622554/DJG02-355.jpg"
+      ],
+      "features": [
+        "1. Aluminum housing;",
+        "2. Thickened and reinforced base design."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "2000W",
+        "NO-LOAD SPEED": "3800/min",
+        "WHEEL SIZE": "Φ355x3xΦ25.4mm",
+        "MITER CUTTING ANGLE": "0-45°",
+        "ROUND BAR": "Φ65mm",
+        "PIPE": "Φ120mm",
+        "PROFILED BAR": "120mmx130mm",
+        "NET WEIGHT": "16.0kg"
+      },
+      "packing": "Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DJG09-355",
+      "name": "DongCheng DJG09-355 Electric Cut-Off Machine",
+      "subtitle": "Electric Cut-Off Machine",
+      "source_url": "https://www.dongchengtool.com/product/detail/1643246138168",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732683262809/DJG09-355.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732683266541/DJG09-355.jpg"
+      ],
+      "features": [
+        "1. 2600W powerful motor, high efficiency cutting;",
+        "2. Efficient heat dissipation system, effectively extending the lifetime of product;",
+        "3. Ergonomic D-shaped handle, for comfortable operation;",
+        "4. High strength base, for increased durability."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "2600W",
+        "NO-LOAD SPEED": "3900/min",
+        "WHEEL SIZE": "Φ355x3xΦ25.4mm",
+        "MITER CUTTING ANGLE": "0-45°",
+        "PIPE": "Φ115mm",
+        "PROFILED BAR": "115x130mm",
+        "NET WEIGHT": "14.5kg"
+      },
+      "packing": "Wrench, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DJX09-255",
+      "name": "DongCheng DJX09-255 Electric Mitre Saw",
+      "subtitle": "Electric Mitre Saw",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646649101661",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732683640224/DJX09-255.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732683644580/DJX09-255.jpg"
+      ],
+      "features": [
+        "1. 2600W powerful motor, high efficiency cutting;",
+        "2. Efficient heat dissipation system, effectively extending the lifetime of product;",
+        "3. Ergonomic D-shaped handle, for comfortable operation;",
+        "4. High strength base, for increased durability."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "2600W",
+        "NO-LOAD SPEED": "3900/min",
+        "HOLE DIA. OF BLADE": "Φ25.4mm",
+        "BLADE DIA": "255mm",
+        "NET WEIGHT": "14.5kg"
+      },
+      "packing": "Wrench, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMR04-12",
+      "name": "DongCheng DMR04-12 Wood Router",
+      "subtitle": "Wood Router",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646727653931",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691059469396/DMR04-12.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691059476317/DMR04-12.jpg"
+      ],
+      "features": [
+        "1850W high power, higher work efficiency."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1850W",
+        "NO-LOAD SPEED": "22000r/min",
+        "MAX. MILLING CUTTER DIA": "Φ12.7mm",
+        "NET WEIGHT": "6.0kg"
+      },
+      "packing": "Wrench (2pcs), Straight Guide, Retainer Base Assembly, Templet Guide, Trimmer Guide Assembly, Collet (6.35mm), Collet (9.52mm), Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMY02-185SH",
+      "name": "DongCheng DMY02-185SH Electric Circular Saw",
+      "subtitle": "Electric Circular Saw",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646729746008",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773719449/DMY02-185SH.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773723719/DMY02-185SH.jpg"
+      ],
+      "features": [
+        "1. Light-weight model；",
+        "2. 66mm Large cutting depth；",
+        "3. Adjustable bevel cutting angle around 0°-45°。",
+        "4. Large dust outlet for smooth discharge."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1100W",
+        "NO-LOAD SPEED": "5600/min",
+        "BLADE DIA": "Φ185mm",
+        "BLADE BORE": "Φ25.4mm",
+        "MAX. CUTTING CAPACITY": "66mm",
+        "MAX. CUTTING ANGLE": "45°",
+        "NET WEIGHT": "3.8kg"
+      },
+      "packing": "Hex Wrench, Fixing Plate, Auxiliary Handle, Hex Socket Head Screw, Handle Connecting Plate, Saw Blade, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DPB20C",
+      "name": "DongCheng DPB20C Electric Wrench",
+      "subtitle": "Electric Wrench",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646813217039",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732682234469/DPB20C.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732682226365/DPB20C.jpg"
+      ],
+      "features": [
+        "1. Rubber-covered front;",
+        "2. Metal gear box;",
+        "3. Rocker type reversing switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "340W",
+        "NO-LOAD SPEED": "1700/min",
+        "RATED IMPACT FREQUENCY": "2000/min",
+        "CAPACITIES(BOLT SIZE)": "M12-M20mm",
+        "SQUARE DRIVE": "12.7×12.7mm",
+        "MAX. FASTENING TORQUE": "294N·m",
+        "NET WEIGHT": "3.2kg"
+      },
+      "packing": "Socket 24×12.5L, Socket Pin, O Ring, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DQB2000",
+      "name": "DongCheng DQB2000 Heat Gun",
+      "subtitle": "Heat Gun",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646815704118",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775924770/DQB2000.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775929076/DQB2000.jpg"
+      ],
+      "features": [
+        "2-gear adjustable temperature and air flow."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "2000W",
+        "TEMPERATURE": "Low Temperature： 50-480℃",
+        "HIGH TEMPERATURE": "340-380L/min",
+        "AIR FLOW": "Low Temperature： 210-250L/min",
+        "NET WEIGHT": "0.8kg"
+      },
+      "packing": "Flat Wind Tube, Round Wind Tube, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DQB05-2000",
+      "name": "DongCheng DQB05-2000 Heat Gun",
+      "subtitle": "Heat Gun",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646816034243",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775996941/DQB05-2000.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732776003324/DQB05-2000.jpg"
+      ],
+      "features": [
+        "3-gear adjustable temperature and air flow."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "2000W",
+        "LOW TEMPERATURE": "300L/min",
+        "MIDDLE TEMPERATURE": "300L/min",
+        "HIGH TEMPERATURE": "500L/min",
+        "NET WEIGHT": "0.57kg"
+      },
+      "packing": "Round Wind Tube, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DQF32",
+      "name": "DongCheng DQF32 Blower Vacuum",
+      "subtitle": "Blower Vacuum",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646816286851",
+      "categorySlug": "cleaning-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775356237/DQF32.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775359869/DQF32.jpg"
+      ],
+      "features": [
+        "Adjustable speed, Dust bag design."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "680W",
+        "NO-LOAD SPEED": "8300-16300/min",
+        "AIR VOLUME": "1.6-3.2m³/min",
+        "NET WEIGHT": "1.8kg"
+      },
+      "packing": "Blowpipe Assembly, Dust Bag Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMB82",
+      "name": "DongCheng DMB82 Electric Planer",
+      "subtitle": "Electric Planer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1642142699500",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684097577/DMB82.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684101762/DMB82.jpg"
+      ],
+      "features": [
+        "1. 500W high quality motor",
+        "2. 0-1mm planing depth",
+        "3. Double rolling blades, Easy planning wood",
+        "4. Belt drive, good toughness and wear resistance, easy to replace",
+        "5. Auxiliary inverted ruler, ensuring straight planning"
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "500W",
+        "NO-LOAD SPEED": "16000/min",
+        "MAX. PLANING WIDTH": "82mm",
+        "MAX. PLANING DEPTH": "1mm",
+        "NET WEIGHT": "2.9kg"
+      },
+      "packing": "Sharpening Holder Assembly, Blade Gauge, Socket Wrench, Guide plate Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMB04-82",
+      "name": "DongCheng DMB04-82 Electric Planer",
+      "subtitle": "Electric Planer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1642142972985",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684217815/DMB04-82.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684221491/DMB04-82.jpg"
+      ],
+      "features": [
+        "1. Rubber covered handle，Provides better control and comfort;",
+        "2. Extra large chip discharge design，No chip blocking, smoother planning;",
+        "3. Front foot with chamfered grooves;",
+        "4. Belt drive，Good toughness and wear resistance, easy to replace."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "500W",
+        "NO-LOAD SPEED": "16000/min",
+        "MAX. PLANING WIDTH": "82mm",
+        "MAX. PLANING DEPTH": "1mm",
+        "NET WEIGHT": "2.4kg"
+      },
+      "packing": "Sharpening Holder Assembly, Blade Gauge, Socket Wrench, Guide Plate Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMP04-6",
+      "name": "DongCheng DMP04-6 Trimmer",
+      "subtitle": "Trimmer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646726651307",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684540400/DMP04-6.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732684544276/DMP04-6.jpg"
+      ],
+      "features": [
+        "1. 550W high power;",
+        "2. Durable aluminum housing;",
+        "3. Transparent acrylic base."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "550W",
+        "NO-LOAD SPEED": "30000/min",
+        "MAX. MILLING CUTTER DIA": "Φ6.35mm",
+        "NET WEIGHT": "1.6kg"
+      },
+      "packing": "Wrench (2pcs), Straight Guide, Templet Guide, Trimmer Guide Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DMY02-235",
+      "name": "DongCheng DMY02-235 Electric Circular Saw",
+      "subtitle": "Electric Circular Saw",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646791672823",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773455228/DMY02-235.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773460016/DMY02-235.jpg"
+      ],
+      "features": [
+        "1. 2000W high power;",
+        "2. light-weight model, adjustable bevel cutting angle around 0-45."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "2000W",
+        "NO-LOAD SPEED": "4100r/min",
+        "BLADE DIA": "235mm",
+        "MAX. CUTTING CAPACITY": "90° 85mm",
+        "MAX. CUTTING ANGLE": "50°",
+        "NET WEIGHT": "6.5kg"
+      },
+      "packing": "Hex Wrench, Fixing Plate, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DML05-405",
+      "name": "DongCheng DML05-405 Electric Chain Saw",
+      "subtitle": "Electric Chain Saw",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646792609902",
+      "categorySlug": "agriculture-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773346702/DML05-405.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732773351443/DML05-405.jpg"
+      ],
+      "features": [
+        "1.1900W high power;",
+        "2. Tool- free guide bar;",
+        "3. Automatic oil pumping."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1900W",
+        "NO-LOAD SPEED": "480m/min",
+        "MAX. LENGTH OF GUIDE BAR": "405mm",
+        "NET WEIGHT": "4.3kg"
+      },
+      "packing": "Saw Chain, Guide Bar, Socket Screwdriver, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DPB12",
+      "name": "DongCheng DPB12 Electric Wrench",
+      "subtitle": "Electric Wrench",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646810658820",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732682072701/DPB12.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732682077225/DPB12.jpg"
+      ],
+      "features": [
+        "1. Metal gear box;",
+        "2. Rocker type reversing switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "300W",
+        "NO-LOAD SPEED": "1800/min",
+        "RATED IMPACT FREQUENCY": "2000/min",
+        "CAPACITIES(BOLT SIZE)": "M8-M12mm",
+        "SQUARE DRIVE": "12.7×12.7mm",
+        "MAX. FASTENING TORQUE": "188N·m",
+        "NET WEIGHT": "2.1kg"
+      },
+      "packing": "Socket 18×12.5L, Socket Pin, O Ring, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DVC15",
+      "name": "DongCheng DVC15 Vacuum Cleaner",
+      "subtitle": "Vacuum Cleaner",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646875527826",
+      "categorySlug": "cleaning-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775039059/DVC15.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/28/1732775044174/DVC15.jpg"
+      ],
+      "features": [
+        "Wet/Dry HEPA Filter"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1200W",
+        "CAPACITY": "15L",
+        "COOLING SYSTEM": "Recycle",
+        "NET WEIGHT": "7.6kg"
+      },
+      "packing": "Dust Cleaning Brush, Water Cleaning Brush, Sofa Cleaning Piece, Flat Suction Nozzle, Round Brush, Telescopic Steel Pipe, Vacuum Hose, Long Joint for Steel Pipe, Hose Connection Accembly, Carton Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DQU160",
+      "name": "DongCheng DQU160 Electric Mixer",
+      "subtitle": "Electric Mixer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646877860838",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2022/2/10/1646877758855/DQU160.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2022/2/10/1646877770543/DQU160.jpg"
+      ],
+      "features": [
+        "Two stirring paddles are available."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "800W",
+        "NO-LOAD SPEED": "680/min",
+        "STIRRING PADDLE DIA": "160mm",
+        "STIRRING PADDE THREAD DIA": "M12",
+        "NET WEIGHT": "2.4kg"
+      },
+      "packing": "Stirring Paddle Assembly, Auxiliary Handle, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DQU160B",
+      "name": "DongCheng DQU160B Electric Mixer",
+      "subtitle": "Electric Mixer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646879235997",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2022/2/10/1646879139667/DQU160B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2022/2/10/1646879150854/DQU160B.jpg"
+      ],
+      "features": [
+        "Two stirring paddles are available."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "800W",
+        "NO-LOAD SPEED": "680/min",
+        "STIRRING PADDLE DIA": "160mm",
+        "STIRRING PADDE THREAD DIA": "M12",
+        "NET WEIGHT": "2.4kg"
+      },
+      "packing": "Stirring Paddle Assembly, Auxiliary Handle, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSM17-100",
+      "name": "DongCheng DSM17-100 Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646360983324",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732600513243/DSM17-100.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732600516861/DSM17-100.jpg"
+      ],
+      "features": [
+        "1. New energy-gathering motor;",
+        "2. High strength gears;",
+        "3. Ultra-slim body;",
+        "4. Detachable dustproof net;",
+        "5. Auto stop carbon brush;",
+        "6.Spindle lock, Rear toggle switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1100W",
+        "NO-LOAD SPEED": "13000/min",
+        "MAX. WHEEL DIA": "Φ100mm",
+        "SPINDLE THREAD": "M10",
+        "NET WEIGHT": "1.8kg"
+      },
+      "packing": "Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSM21-100",
+      "name": "DongCheng DSM21-100 Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646362094198",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732601150616/DSM21-100.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732601154165/DSM21-100.jpg"
+      ],
+      "features": [
+        "1、186mm ultra slim body comfortable to hold and easy to control",
+        "2、900W powerful motor",
+        "3、Labyrinth dustproof structure",
+        "4、2-motion slide switch"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "900W",
+        "NO-LOAD SPEED": "13000/min",
+        "MAX. WHEEL DIA": "Φ100mm",
+        "SPINDLE THREAD": "M10",
+        "NET WEIGHT": "1.6kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSM02-125B",
+      "name": "DongCheng DSM02-125B Angle Grinder",
+      "subtitle": "Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646370011511",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732603576341/DSM02-125B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732603581197/DSM02-125B.jpg"
+      ],
+      "features": [
+        "1. 1200W high power;",
+        "2. Spindle lock, Large trigger switch."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1200W",
+        "NO-LOAD SPEED": "11800/min",
+        "MAX. WHEEL DIA": "Φ125mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "3.0kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSP06-180",
+      "name": "DongCheng DSP06-180 Polisher",
+      "subtitle": "Polisher",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646380968573",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732609383679/DSP06-180.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732609387702/DSP06-180.jpg"
+      ],
+      "features": [
+        "1. 2.4kg lightweight body 30% lighter than conventional polisher.",
+        "2. Electronic constant speed, maintains constant speed under load;",
+        "3. 6-speed adjustmen:(600/1000/1500/2000/2500/3000min)Meeting different working requirements;",
+        "4. Four-finger trigger switch with lock-on button comfortable to grip and suitable for long time use"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1400W",
+        "NO-LOAD SPEED": "600-3000/min",
+        "WHEEL SIZE": "φ180mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "2.4kg"
+      },
+      "packing": "Polishing Sponge, Auxiliary Handle, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSJ25B",
+      "name": "DongCheng DSJ25B Die Grinder",
+      "subtitle": "Die Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646382355075",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610111397/DSJ25B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732610115555/DSJ25B.jpg"
+      ],
+      "features": [
+        "Half structure."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "240W",
+        "NO-LOAD SPEED": "26000/min",
+        "MAX.GRINDING WHEEL DIA": "φ25mm",
+        "MAX.COLLET SIZE": "6mm",
+        "NET WEIGHT": "1.2kg"
+      },
+      "packing": "Large Wrench, Small Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSJ02-25",
+      "name": "DongCheng DSJ02-25 Die Grinder",
+      "subtitle": "Die Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646382614934",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/2/1690968170504/DSJ02-25.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/2/1690968177801/DSJ02-25.jpg"
+      ],
+      "features": [
+        "Metal gear box."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "400W",
+        "NO-LOAD SPEED": "27000/min",
+        "MAX.GRINDING WHEEL DIA": "φ25mm",
+        "MAX.COLLET SIZE": "6mm",
+        "NET WEIGHT": "1.8kg"
+      },
+      "packing": "Large Wrench, Small Wrench, Collet, Barrel Guard, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSN100",
+      "name": "DongCheng DSN100 Sander Polisher",
+      "subtitle": "Sander Polisher",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646384492825",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732667771826/DSN100.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732667777027/DSN100.jpg"
+      ],
+      "features": [
+        "1. Adjustable speed",
+        "2. Electronic constant speed control, maintains constant speed under load"
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1400W",
+        "NO-LOAD SPEED": "690-3800/min",
+        "WHEEL SIZE": "Φ120x100mm",
+        "NET WEIGHT": "4.7kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSB185B",
+      "name": "DongCheng DSB185B Orbital Sander",
+      "subtitle": "Orbital Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646462938255",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732666944976/DSB185B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732666949239/DSB185B.jpg"
+      ],
+      "features": [
+        "1. Power upgrade to 200W;",
+        "2. Trigger switch with lock-on button."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "200W",
+        "ORBITS FREQUENCY": "11000/min",
+        "PAD SIZE": "93x185mm",
+        "NET WEIGHT": "1.6kg"
+      },
+      "packing": "Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSB03-185",
+      "name": "DongCheng DSB03-185 Orbital Sander",
+      "subtitle": "Orbital Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646461785725",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732611228942/DSB03-185.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732611234069/DSB03-185.jpg"
+      ],
+      "features": [
+        "1. Ergonomic design，offer multiple hand placements and reduce operators' fatigue",
+        "2. Low vibration,reduce arm fatigue",
+        "3. Trigger switch with lock-on button，effectively prevent accidental contact."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "320W",
+        "ORBITS FREQUENCY": "11500/min",
+        "PAD SIZE": "114x234mm",
+        "NET WEIGHT": "2.9kg"
+      },
+      "packing": "Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DST610",
+      "name": "DongCheng DST610 Belt Sander",
+      "subtitle": "Belt Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646464163146",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/2/1690969959660/DST610.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/2/1690969965988/DST610.jpg"
+      ],
+      "features": [
+        "Dust bag design, Suitable for lager area sanding operation."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1200W",
+        "BELT SPEED": "500m/min",
+        "BELT SIZE": "100x610mm",
+        "NET WEIGHT": "5.8kg"
+      },
+      "packing": "Abrasive Belt (AP80), Dust Bag Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DSF02-180",
+      "name": "DongCheng DSF02-180 Drywall Sander",
+      "subtitle": "Drywall Sander",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646464609832",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732611658734/DSF02-180.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/26/1732611662488/DSF02-180.jpg"
+      ],
+      "features": [
+        "1. LED double light band, no blind spot;",
+        "2. Self-vacuum function;",
+        "3. Adjustable speed."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "750W",
+        "NO-LOAD SPEED": "1500-2700/min",
+        "GRINDING DISC DIA": "φ180mm",
+        "NET WEIGHT": "2.3kg"
+      },
+      "packing": "Auxiliary Handle, Dust Cleaning Hose Assembly, Dust Bag, Cannulate Sockolet, Abrasive Paper Assembly, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZE180S",
+      "name": "DongCheng DZE180S Marble Cutter",
+      "subtitle": "Marble Cutter",
+      "source_url": "https://www.dongchengtool.com/product/detail/1644136156951",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732668520004/DZE180S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732668524065/DZE180S.jpg"
+      ],
+      "features": [
+        "1. 1900W powerful motor, high efficiency cutting;",
+        "2. Efficient heat dissipation air vents, effectively extending the lifetime of product;",
+        "3. Dual-handle Design Improved control and stability",
+        "4. Adjustable cutting depth, meeting different working condition."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1900W",
+        "NO-LOAD SPEED": "5500/min",
+        "BLADE DIA": "Φ180mm",
+        "MAX. CUTTING CAPACITY": "58mm",
+        "NET WEIGHT": "7.0kg"
+      },
+      "packing": "Socket Wrench, Auxiliary Handle, wrench, Carbon Brush, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZD35",
+      "name": "DongCheng DZD35 Concrete Vibrator",
+      "subtitle": "Concrete Vibrator",
+      "source_url": "https://www.dongchengtool.com/product/detail/1732669589936",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669477012/Z1D-FF-35--混凝土振动器（手持式）.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669481608/Z1D-FF-35--混凝土振动器（手持式）.jpg"
+      ],
+      "features": [
+        "1. 1200W powerful motor;",
+        "2. Cast aluminum head, strong and durable;",
+        "3. Large cooling holes to avoid burning;",
+        "4. Rubber covered handle, comfortable grip."
+      ],
+      "specifications": {
+        "RATED CURRENT INPUT": "1200W",
+        "NO-LOAD SPEED": "4300/min",
+        "OUTPUT SHAFT SPECIFICATION": "8mm",
+        "NET WEIGHT": "2.0kg"
+      },
+      "packing": "Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZC05-26B",
+      "name": "DongCheng DZC05-26B Hammer Drill",
+      "subtitle": "Hammer Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646463500099",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669866709/DZC05-26B.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669871343/DZC05-26B.jpg"
+      ],
+      "features": [
+        "1. Adjustable speed, Forward and reverse rotation;",
+        "2. 3-Mode operation, drill, rotary hammer and demolition;",
+        "3. SDS-PLUS."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "800W",
+        "IMPACT ENERGY": "2.8J",
+        "NO-LOAD SPEED": "0-1200/min",
+        "RATED IMPACT FREQUENCY": "0-4000/min",
+        "MAX. DRILLING CAPACITY": "Concrete Φ26mm",
+        "NET WEIGHT": "2.93kg"
+      },
+      "packing": "Auxiliary Handle, Depth Gauge, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZC03-26SH",
+      "name": "DongCheng DZC03-26SH Electric Rotary Hammer",
+      "subtitle": "Electric Rotary Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646457987942",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669763835/DZC03-26SH.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732669768353/DZC03-26SH.jpg"
+      ],
+      "features": [
+        "1. Upgraded model from DZC03-26, for longer lifetime, optimized sealing structure；",
+        "2. Two functions: rotary hammer and demolition;",
+        "3. New safety release clutch;",
+        "4. SDS-PLUS."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "750W",
+        "IMPACT ENERGY": "3.0J",
+        "NO-LOAD SPEED": "700/min",
+        "RATED IMPACT FREQUENCY": "3200/min",
+        "MAX. DRILLING CAPACITY": "Concrete Φ26mm",
+        "NET WEIGHT": "5.0kg"
+      },
+      "packing": "Oiler, Dust Cap, O Ring (2pcs), Auxiliary Handle, Depth Gauge, Wrench, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DCJZ2060i",
+      "name": "DongCheng DCJZ2060i Cordless Brushless Driver/ Hammer Drill",
+      "subtitle": "Cordless Brushless Driver/ Hammer Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1732067084907",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732066888037/DCJZ2060i.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732066898096/DCJZ2060i.jpg"
+      ],
+      "features": [
+        "1. Brushless motor: High efficiency，powerful and durable;",
+        "2. 152mm compact body: perfect control in narrow spaces;",
+        "3. 20+2 torque setting:Applicable to different working conditions;",
+        "4. 2-speed adjustment: Meet different requirements;",
+        "5. 13mm metal ratchet chuck:sturdy, durable and strong clamping."
+      ],
+      "specifications": {
+        "BATTERY": "20VMAX/2.0Ah×1/2.0Ah×2/4.0Ah×2/Solo",
+        "MAX. POWER OUTPUT": "500W",
+        "MAX. CHUCKING CAPACITY": "13mm",
+        "RATED IMPACT FREQUENCY": "0-34500/min",
+        "NO-LOAD SPEED": "1st gear 0-600 /min",
+        "MAX. DRILLING DIA": "Steel Φ13mm",
+        "BRICK WALL": "Φ13mm",
+        "WOOD": "Φ38mm",
+        "TORQUE SETTING": "20+2",
+        "MAX. TORQUE": "60N.m",
+        "NET WEIGHT": "1.5/1.5/1.7/1.1kg"
+      },
+      "packing": "(Type ADM) 2.0Ahx1, 2A Charger (Type AM) 2.0Ahx2, 2A Charger (Type EM) 4.0Ahx2, 2A Charger (Type Z) Solo, Color Box Packing Driver Bit, Belt Cilp, Plastic Case Packing",
+      "isFeatured": true
+    },
+    {
+      "model": "DCSM03-100",
+      "name": "DongCheng DCSM03-100 Cordless Brushless Angle Grinder",
+      "subtitle": "Cordless Brushless Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1642205372810",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732062863356/DCSM03-100.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732062890048/DCSM03-100.jpg"
+      ],
+      "features": [
+        "1. Brushless motor;",
+        "2. Detachable dustproof net;",
+        "3. Anti-restart function prevent accident start;",
+        "4. Auto stop when disc lost speed."
+      ],
+      "specifications": {
+        "BATTERY": "20VMAX/4.0Ah×1/4.0Ah×2/5.0Ah×2/Solo",
+        "RATED SPEED": "8500r/min",
+        "MAX. WHEEL DIA": "Φ100mm",
+        "HOLE DIA.OF WHEEL": "Φ16mm",
+        "SPINDLE THREAD": "M10mm",
+        "NET WEIGHT": "2.2kg/2.2kg/2.2kg/1.6kg"
+      },
+      "packing": "FK: 5.0Ah×2(4A Charger) EM: 4.0Ah×2(2A Charger) DM: 4.0Ah×1(2A Charger) Auxiliary Handle, Wrench, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DCSM04-125",
+      "name": "DongCheng DCSM04-125 Cordless Brushless Angle Grinder",
+      "subtitle": "Cordless Brushless Angle Grinder",
+      "source_url": "https://www.dongchengtool.com/product/detail/1743579608424",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2025/9/24/1761295475005/DCSM04-125.jpg"
+      ],
+      "features": [
+        "1. Brushless motor, 1000W equivalent max power;",
+        "2. Tool-free adjustment guard; easy to adjust the angle of the guard;",
+        "3. 3-speed eletronic gear shift: meet different working conditions;",
+        "4. Kickback Control & Brake & Overload Restart;",
+        "5. Detachable metal dustproof filter, paddle switch.."
+      ],
+      "specifications": {
+        "BATTERY": "20V MAX",
+        "MAX. POWER OUTPUT": "1000W",
+        "NO-LOAD SPEED": "4000 / 6500 / 9000 /min",
+        "MAX. WHEEL DIA.": "Φ125mm",
+        "SPINDLE THREAD": "M14",
+        "NET WEIGHT": "2.5 / 2.8 / 1.9kg"
+      },
+      "packing": "Auxiliary Handle, Wrench, Tool-free Adjustment Guard, Plastic Case Packing (Except Type Z)",
+      "isFeatured": true
+    },
+    {
+      "model": "DCJZ1202",
+      "name": "DongCheng DCJZ1202 Cordless Driver Drill",
+      "subtitle": "Cordless Driver Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1641398181751",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/19/1732002367092/DCJZ1202.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/19/1732002379106/DCJZ1202.jpg"
+      ],
+      "features": [
+        "1. Budget-friendly, New battery pack platform;",
+        "2. 2-Speed, 35N.m high torque."
+      ],
+      "specifications": {
+        "BATTERY": "10.8V/2.0Ah×2",
+        "MAX.CHUCKING CAPACITY": "10mm",
+        "NO-LOAD SPEED": "Low:0-400r/min",
+        "HIGH": "0-1500r/min",
+        "MAX.DRILLING DIA": "Steel:Φ10mm",
+        "WOOD": "Φ22mm",
+        "TORQUE SETTING": "18+1",
+        "MAX.TORQUE": "35N.m",
+        "NET WEIGHT": "1.0kg"
+      },
+      "packing": "Battery Charger, 2.0Ah Battery Pack (2pcs), Driver Bit, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DCZC02-26",
+      "name": "DongCheng DCZC02-26 Cordless Brushless Rotary Hammer",
+      "subtitle": "Cordless Brushless Rotary Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1732062317222",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732062044470/DCZC02-26.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732062024717/DCZC02-26.jpg"
+      ],
+      "features": [
+        "1. Brushless motor;",
+        "2. DSC:Mechanical clutch and electronic anti-twist;",
+        "3. DHE: High efficiency technology;",
+        "4. 3-Mode operation, drill, rotary hammer and demolition;"
+      ],
+      "specifications": {
+        "BATTERY": "20V MAX/4.0Ah×2/6.0Ah×2/Solo",
+        "MAX. POWER OUTPUT": "600W",
+        "IMPACT ENERGY": "3.1J",
+        "NO-LOAD SPEED": "0-960/min",
+        "RATED IMPACT FREQUENCY": "0-4260/min",
+        "CONCRETE": "Φ26mm",
+        "STEEL": "Φ13mm",
+        "WOOD": "Φ30mm",
+        "NET WEIGHT": "3.4/3.6/2.5kg"
+      },
+      "packing": "(Type EM)4.0Ahx2,2ACharger (Type H2K)6.0Ahx2,4ACharger (Type Z)Solo,Color Box Packing Auxiliary Handle, Depth Gauge, Plastic Case Packing",
+      "isFeatured": true
+    },
+    {
+      "model": "DCMY02-185",
+      "name": "DongCheng DCMY02-185 Cordless Brushless Circular Saw",
+      "subtitle": "Cordless Brushless Circular Saw",
+      "source_url": "https://www.dongchengtool.com/product/detail/1642205994951",
+      "categorySlug": "cordless-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732063502162/DCMY02-185.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/20/1732063512369/DCMY02-185.jpg"
+      ],
+      "features": [
+        "1. Brushless motor;",
+        "2. Ultra-compact body;",
+        "3. Anti-restart and electronic brake function;",
+        "4. Adjustable 0-45° bever cutting angle;",
+        "5. Max.cutting Capacity: 0° 65mm."
+      ],
+      "specifications": {
+        "BATTERY": "20VMAX/4.0Ah×1/4.0Ah×2/5.0Ah×2/Solo",
+        "NO-LOAD SPEED": "5000r/min",
+        "BLADE DIA": "185mm",
+        "MAX.CUTTING CAPACITY": "0° 65mm",
+        "MAX.CUTTING ANGLE": "45°",
+        "NET WEIGHT": "4.1kg/4.1kg/4.1kg/3.5kg"
+      },
+      "packing": "FK: 5.0Ah×2(4A Charger) BM: 4.0Ah×2(2A Charger) DM: 4.0Ah×1(2A Charger) Hex Wrench, Fixing Plate, Color Box Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZG6S",
+      "name": "DongCheng DZG6S Percussion Hammer",
+      "subtitle": "Percussion Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646895095911",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691056510709/DZG6S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691056522084/DZG6S.jpg"
+      ],
+      "features": [
+        "1. High quality piston rubber ring;",
+        "2. Hex 17mm."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1050W",
+        "IMPACT ENERGY": "10.1J",
+        "RATED IMPACT FREQUENCY": "2900/min",
+        "NET WEIGHT": "6.8kg"
+      },
+      "packing": "Grease, Auxiliary Handle, Special Wrench, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZG06-6S",
+      "name": "DongCheng DZG06-6S Percussion Hammer",
+      "subtitle": "Percussion Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646979309995",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671057709/DZG06-6S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671067437/DZG06-6S.jpg"
+      ],
+      "features": [
+        "1. 1400W super power;",
+        "2. Newly upgraded vibration absorbing system;",
+        "3. 35mm diameter cylinder, more destructive;",
+        "4. Robust structure design;",
+        "5. Hex 17mm."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1400W",
+        "IMPACT ENERGY": "16.8J",
+        "RATED IMPACT FREQUENCY": "3900/min",
+        "NET WEIGHT": "6.8kg"
+      },
+      "packing": "Grease, Auxiliary Handle, Special Wrench, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZG07-6",
+      "name": "DongCheng DZG07-6 Percussion Hammer",
+      "subtitle": "Percussion Hammer",
+      "source_url": "https://www.dongchengtool.com/product/detail/1732671536096",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671436625/DZG07-6.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671440968/DZG07-6.jpg"
+      ],
+      "features": [
+        "1. 40mm diameter cylinder, strong crushing capacity;",
+        "2. DVR handle shock absorption：Shockproof cushioning ; Improve operation comfort.",
+        "3. High strength sleeve：Precise clamping to prevent looseness and work more stably.",
+        "4. Optimize the air outlet and heat sink：Efficient heat dissipation, which improves service life.",
+        "5. Auxiliary handle：It can rotate 360 ° to reduce work fatigue."
+      ],
+      "specifications": {
+        "RATED POWER INPUT": "1600W",
+        "IMPACT ENERGY": "22J",
+        "RATED IMPACT FREQUENCY": "2900/min",
+        "NET WEIGHT": "7.3kg"
+      },
+      "packing": "Grease, Auxiliary Handle, Special Wrench, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZZ90",
+      "name": "DongCheng DZZ90 DiDMond Drill With Water Source",
+      "subtitle": "DiDMond Drill With Water Source",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646980340384",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671602342/DZZ90.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732671606250/DZZ90.jpg"
+      ],
+      "features": [
+        "1. Light-weight model, Handheld type;",
+        "2. Adjustable speed."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1350W",
+        "NO-LOAD SPEED": "0-2300/min",
+        "MAX. DRILLING CAPACITY": "Φ90mm",
+        "NET WEIGHT": "4.4kg"
+      },
+      "packing": "Water Pipe, Pipe Connector, Open-end Wrench, Auxiliary Handle, Shoulder Support Assembly, Carbon Brush, Plastic Case Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZZ02-130",
+      "name": "DongCheng DZZ02-130 Diamond Drill With Water Source",
+      "subtitle": "Diamond Drill With Water Source",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646983594449",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057011415/DZZ02-130.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057020353/DZZ02-130.jpg"
+      ],
+      "features": [
+        "earth leakage protection"
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "1800W",
+        "NO-LOAD SPEED": "1200/min",
+        "MAX. DRILLING CAPACITY": "Φ130mm",
+        "NET WEIGHT": "11.6kg"
+      },
+      "packing": "Water Pipe, Pipe Connector, Open-end Wrench, Hex Wrench (2pcs), Carbon Brush, Carton Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DZZ02-200S",
+      "name": "DongCheng DZZ02-200S Diamond Drill With Water Source",
+      "subtitle": "Diamond Drill With Water Source",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646988193059",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057311305/DZZ02-200S.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2023/7/3/1691057318727/DZZ02-200S.jpg"
+      ],
+      "features": [
+        "Earth leakage protection."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "3500W",
+        "NO-LOAD SPEED": "700/min",
+        "MAX. DRILLING CAPACITY": "Φ200mm",
+        "NET WEIGHT": "25.0kg"
+      },
+      "packing": "Water Pipe, Pipe Connector, Open-end Wrench, Hex Wrench (3pcs) , Carbon Brush, Carton Packing",
+      "isFeatured": false
+    },
+    {
+      "model": "DJC30",
+      "name": "DongCheng DJC30 Magnetic Drill",
+      "subtitle": "Magnetic Drill",
+      "source_url": "https://www.dongchengtool.com/product/detail/1646642680548",
+      "categorySlug": "power-tools",
+      "images": [
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732676374859/DJC30.jpg",
+        "https://dongcheng.obs.ap-southeast-1.myhuaweicloud.com/cms/2024/10/27/1732676379894/DJC30.jpg"
+      ],
+      "features": [
+        "1. Core Drill only;",
+        "2. Fuse overload protection."
+      ],
+      "specifications": {
+        "RATED POWER IUPUT": "900W",
+        "MAX. DRILLING CAPACITY": "Φ30mm",
+        "MAX. DRILLING DEPTH": "35mm",
+        "MAGNETISM": "11500N",
+        "NO-LOAD SPEED": "450/min",
+        "MAX. STROKE": "140mm",
+        "CONNECTOR": "Straight Shank Φ19mm",
+        "NET WEIGHT": "11.5kg"
+      },
+      "packing": "Core Drill Bit (22mm), Safety Belt, Open-end Wrench, Hex Wrench (2pcs), Fuse, Carbon Brush, Plastic Case Packing",
+      "isFeatured": true
+    }
+  ]
+}

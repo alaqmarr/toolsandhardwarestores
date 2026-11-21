@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
 import ProductDetailClient from '@/components/ProductDetailClient'
+import ProductCard from '@/components/ProductCard'
 import StickyWhatsAppBar from '@/components/StickyWhatsAppBar'
 import type { Metadata } from 'next'
 
@@ -110,12 +111,57 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     notFound()
   }
 
+  const relatedProducts = await prisma.product.findMany({
+    where: {
+      categoryId: product.categoryId,
+      id: { not: product.id },
+    },
+    include: {
+      brand: true,
+      category: true,
+    },
+    orderBy: [{ isFeatured: 'desc' }, { name: 'asc' }],
+    take: 5,
+  })
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-24 space-y-8">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-10 pb-24 space-y-12">
       <ProductDetailClient
         product={product}
         primaryPhone={settings.primaryPhone}
       />
+
+      {relatedProducts.length > 0 && (
+        <section className="pt-10 border-t border-slate-200 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="text-xs font-black uppercase tracking-widest text-red-600">
+                More in {product.category.name}
+              </div>
+              <h2 className="text-2xl font-black text-slate-900">
+                Related Tools & Equipment
+              </h2>
+            </div>
+            <Link
+              href={`/categories/${product.category.slug}`}
+              className="text-xs font-extrabold text-red-600 hover:underline"
+            >
+              View All in {product.category.name} →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+            {relatedProducts.map((rel) => (
+              <ProductCard
+                key={rel.id}
+                product={rel}
+                primaryPhone={settings.primaryPhone}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
       <StickyWhatsAppBar
         primaryPhone={settings.primaryPhone}
         itemName={product.name}

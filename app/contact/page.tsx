@@ -31,7 +31,7 @@ export default async function ContactPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-16 pb-24">
       {/* 1. HERO HEADER */}
       <div className="border-b border-slate-200 pb-10 space-y-4">
         <div className="text-xs font-black uppercase tracking-widest text-red-600">
@@ -71,7 +71,7 @@ export default async function ContactPage() {
               <div className="text-xs text-slate-500 font-semibold">Wholesale Email</div>
               <a
                 href={`mailto:${settings.primaryEmail}`}
-                className="text-sm font-bold text-slate-900 hover:text-red-600 transition truncate block max-w-[200px]"
+                className="text-sm font-bold text-slate-900 hover:text-red-600 transition break-all"
               >
                 {settings.primaryEmail}
               </a>

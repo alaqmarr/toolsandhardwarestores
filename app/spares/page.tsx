@@ -1,49 +1,29 @@
 import React from 'react'
-import Link from 'next/link'
 import { Wrench, ShieldCheck, CheckCircle2 } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
+import { querySpares, DEFAULT_PAGE_SIZE } from '@/lib/catalogQueries'
 import SparesCatalogClient from '@/components/SparesCatalogClient'
 
 export const revalidate = 60
 
 export default async function SparesPage() {
-  const settings = await getContactSettings()
-
-  // 1. Fetch all top-level spare categories
-  const topCategories = await prisma.spareCategory.findMany({
-    where: { parentId: null },
-    include: {
-      children: {
-        orderBy: { name: 'asc' },
-      },
-    },
-    orderBy: { name: 'asc' },
-  })
-
-  // 2. Fetch all spares with their category and compatible tool fitments
-  const spares = await prisma.spare.findMany({
-    include: {
-      spareCategory: {
-        include: {
-          parent: true,
+  const [settings, topCategories, initialCatalog] = await Promise.all([
+    getContactSettings(),
+    prisma.spareCategory.findMany({
+      where: { parentId: null },
+      include: {
+        children: {
+          orderBy: { name: 'asc' },
         },
       },
-      products: {
-        include: {
-          product: {
-            include: {
-              brand: true,
-            },
-          },
-        },
-      },
-    },
-    orderBy: { name: 'asc' },
-  })
+      orderBy: { name: 'asc' },
+    }),
+    querySpares({ page: 1, limit: DEFAULT_PAGE_SIZE }),
+  ])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-12 pb-24">
       {/* Header Banner */}
       <div className="border-b border-slate-200 pb-8 space-y-3">
         <div className="text-xs font-black uppercase tracking-widest text-red-600">
@@ -53,8 +33,9 @@ export default async function SparesPage() {
           Genuine Spare Parts & Armatures
         </h1>
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-          Explore our complete inventory of armatures, rotors, stators, universal carbon brushes,
-          switches, and gears. All spares are original factory direct and ready for immediate dispatch.
+          Explore our complete inventory of {initialCatalog.total.toLocaleString()} armatures,
+          rotors, stators, universal carbon brushes, switches, and gears. All spares are original
+          factory direct and ready for immediate dispatch.
         </p>
 
         {/* Confidence badges */}
@@ -74,9 +55,11 @@ export default async function SparesPage() {
         </div>
       </div>
 
-      {/* Interactive Catalog Client (Search, Filters, Subcategories & Modal) */}
+      {/* Interactive Catalog Client (Server-backed Search, Filters, Subcategories & Pagination) */}
       <SparesCatalogClient
-        initialSpares={spares}
+        initialSpares={initialCatalog.items}
+        initialTotal={initialCatalog.total}
+        pageSize={DEFAULT_PAGE_SIZE}
         topCategories={topCategories}
         primaryPhone={settings.primaryPhone}
       />

@@ -1,0 +1,314 @@
+{
+  "source": "https://www.bosch-pt.co.in/",
+  "brand": {
+    "name": "Bosch",
+    "slug": "bosch",
+    "image": "https://media.bosch-pt.co.in/media/professional/central_assets/bosch_logo/bosch.svg",
+    "isCore": true,
+    "isSpecialty": false,
+    "description": "Leading German industrial power tools manufacturer. Authorized Core Distributor for Bosch Professional & Bosch Standard Line tools."
+  },
+  "products": [
+    {
+      "model": "DC 125",
+      "partNumber": "0 615 V00 00R",
+      "slugPn": "0615V0000R",
+      "name": "Bosch DC 125 4\" Marble Cutter (Standard Line)",
+      "type": "4\" Marble Cutter",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Hex Key, 1 x Spanner",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00R",
+        "RATED INPUT POWER": "1250 W",
+        "NO-LOAD SPEED": "13200 rpm",
+        "MAX. CUTTING DISC DIAMETER": "115 mm",
+        "MAX. CUTTING DEPTH": "35 mm",
+        "WEIGHT": "2.9 kg",
+        "INCLUDED ACCESSORIES": "1 x Hex Key, 1 x Spanner"
+      },
+      "features": [
+        "Powerful 1250W motor for fast stone, marble & tile cutting",
+        "13,200 rpm high no-load speed for smooth cut finish",
+        "115 mm disc capacity with up to 35 mm cutting depth",
+        "Includes 1 x Hex Key and 1 x Spanner"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457767-54/application-image/full/marble-saw-standard-line-dc-125-0615v0000r.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457769-54/application-image/full/marble-saw-standard-line-dc-125-0615v0000r.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457768-117/application-image/full/marble-saw-standard-line-dc-125-0615v0000r.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457773-117/dimensional-drawing-image/full/marble-saw-standard-line-dc-125-0615v0000r.jpg"
+      ]
+    },
+    {
+      "model": "ID 500",
+      "partNumber": "0 615 V00 00P",
+      "slugPn": "0615V0000P",
+      "name": "Bosch ID 500 Impact Drill (Standard Line)",
+      "type": "Impact Drill",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Chuck Wrench, 1 x Auxiliary Handle",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00P",
+        "RATED INPUT POWER": "500 W",
+        "NO-LOAD SPEED": "0-3000 rpm",
+        "IMPACT RATE": "0-48000 bpm",
+        "CHUCK CAPACITY": "13 mm",
+        "MAX. DRILLING IN METAL": "10 mm",
+        "MAX. DRILLING IN MASONRY": "13 mm",
+        "MAX. DRILLING IN WOOD": "25 mm",
+        "WEIGHT": "1.7 kg",
+        "INCLUDED ACCESSORIES": "1 x Chuck Wrench, 1 x Auxiliary Handle"
+      },
+      "features": [
+        "Compact 500W impact drill for masonry, metal & wood",
+        "13 mm keyed chuck with 0-3000 rpm variable speed",
+        "Up to 48,000 bpm impact rate for concrete & brickwork",
+        "Includes 1 x Chuck Wrench and 1 x Auxiliary Handle"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/468729-54/application-image/full/impact-drill-standard-line-id-500-0615v0000p.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470738-54/application-image/full/impact-drill-standard-line-id-500-0615v0000p.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470747-117/dimensional-drawing-image/full/impact-drill-standard-line-id-500-0615v0000p.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474678-117/application-image/full/impact-drill-standard-line-id-500-0615v0000p.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474679-117/application-image/full/impact-drill-standard-line-id-500-0615v0000p.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474680-117/application-image/full/impact-drill-standard-line-id-500-0615v0000p.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474681-117/application-image/full/impact-drill-standard-line-id-500-0615v0000p.jpg"
+      ]
+    },
+    {
+      "model": "WS 650",
+      "partNumber": "0 615 V00 00L",
+      "slugPn": "0615V0000L",
+      "name": "Bosch WS 650 Angle Grinder (Standard Line)",
+      "type": "Angle Grinder",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Pin-Type Wrench, 1 x Auxiliary Handle, 1 x Protective Cover",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00L",
+        "RATED INPUT POWER": "650 W",
+        "NO-LOAD SPEED": "12,000 rpm",
+        "DISC DIAMETER": "100 mm",
+        "SPINDLE THREAD": "M10",
+        "GRIP SIZE": "190 mm",
+        "WEIGHT": "1.6 kg",
+        "INCLUDED ACCESSORIES": "1 x Pin-Type Wrench, 1 x Auxiliary Handle, 1 x Protective Cover"
+      },
+      "features": [
+        "Slim 190 mm grip circumference for comfortable single-hand control",
+        "650W motor running at 12,000 rpm for 100 mm (4-inch) discs",
+        "M10 spindle thread with lightweight 1.6 kg body",
+        "Includes Pin-Type Wrench, Auxiliary Handle & Protective Cover"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457766-54/application-image/full/angle-grinder-standard-line-ws-650-0615v0000l.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/458460-54/application-image/full/angle-grinder-standard-line-ws-650-0615v0000l.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457777-117/application-image/full/angle-grinder-standard-line-ws-650-0615v0000l.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/464015-117/dimensional-drawing-image/full/angle-grinder-standard-line-ws-650-0615v0000l.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474683-117/application-image/full/angle-grinder-standard-line-ws-650-0615v0000l.jpg"
+      ]
+    },
+    {
+      "model": "ST 650",
+      "partNumber": "0 615 V00 00K",
+      "slugPn": "0615V0000K",
+      "name": "Bosch ST 650 Jigsaw (Standard Line)",
+      "type": "Jigsaw",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Hex Key, 1 x Jigsaw Blade, 1 x Anti-splinter Guard",
+      "isFeatured": false,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00K",
+        "RATED INPUT POWER": "450 W",
+        "STROKE RATE": "800-3100 min⁻¹",
+        "MAX. CUTTING DEPTH IN WOOD": "65 mm",
+        "MAX. CUTTING DEPTH IN ALUMINIUM": "10 mm",
+        "MAX. CUTTING DEPTH IN METAL": "3 mm",
+        "WEIGHT": "1.9 kg",
+        "INCLUDED ACCESSORIES": "1 x Hex Key, 1 x Jigsaw Blade, 1 x Anti-splinter Guard"
+      },
+      "features": [
+        "450W variable-speed jigsaw (800-3100 strokes/min)",
+        "Cuts up to 65 mm in wood, 10 mm in aluminium, and 3 mm in metal",
+        "Compact 1.9 kg ergonomic design for curved & straight cuts",
+        "Includes Hex Key, Jigsaw Blade & Anti-splinter Guard"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457770-54/application-image/full/jigsaw-standard-line-st-650-0615v0000k.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457771-54/application-image/full/jigsaw-standard-line-st-650-0615v0000k.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457774-117/dimensional-drawing-image/full/jigsaw-standard-line-st-650-0615v0000k.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/457778-117/application-image/full/jigsaw-standard-line-st-650-0615v0000k.jpg"
+      ]
+    },
+    {
+      "model": "KS 120",
+      "partNumber": "0 615 V00 00M",
+      "slugPn": "0615V0000M",
+      "name": "Bosch KS 120 Circular Saw (Standard Line)",
+      "type": "Circular Saw",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Parallel Guide, 1 x Hex Key",
+      "isFeatured": false,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00M",
+        "RATED INPUT POWER": "1200 W",
+        "NO-LOAD SPEED": "5800 rpm",
+        "BLADE SIZE": "184 mm",
+        "BORE SIZE": "20 mm",
+        "CUTTING DEPTH (90°/45°)": "64 / 45 mm",
+        "DUST EXTRACTOR COMPATIBLE": "Yes",
+        "WEIGHT": "3.9 kg",
+        "INCLUDED ACCESSORIES": "1 x Parallel Guide, 1 x Hex Key"
+      },
+      "features": [
+        "1200W high-torque circular saw with 184 mm blade",
+        "64 mm cutting depth at 90° and 45 mm bevel capacity at 45°",
+        "Dust extractor compatible port for cleaner jobsite cutting",
+        "Includes 1 x Parallel Guide and 1 x Hex Key"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/468727-54/application-image/full/saws-standard-line-ks-120-0615v0000m.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470739-54/application-image/full/saws-standard-line-ks-120-0615v0000m.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470745-117/dimensional-drawing-image/full/saws-standard-line-ks-120-0615v0000m.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470752-117/application-image/full/saws-standard-line-ks-120-0615v0000m.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470753-117/application-image/full/saws-standard-line-ks-120-0615v0000m.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470754-117/application-image/full/saws-standard-line-ks-120-0615v0000m.jpg"
+      ]
+    },
+    {
+      "model": "BH 426",
+      "partNumber": "0 615 V00 00S",
+      "slugPn": "0615V0000S",
+      "name": "Bosch BH 426 Rotary Hammer (Standard Line)",
+      "type": "Rotary Hammer with SDS plus",
+      "categorySlug": "power-tools",
+      "accessories": "1 x Grease Case, 1 x Pin-Type Wrench, 1 x Protective Cap",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00S",
+        "RATED INPUT POWER": "950 W",
+        "DRILLING DIAMETER": "26 mm",
+        "IMPACT ENERGY": "4.5 J",
+        "NO-LOAD SPEED": "1000 rpm",
+        "IMPACT RATE": "4500 bpm",
+        "MODES": "2",
+        "WEIGHT": "4.3 kg",
+        "INCLUDED ACCESSORIES": "1 x Grease Case, 1 x Pin-Type Wrench, 1 x Protective Cap"
+      },
+      "features": [
+        "Heavy-duty 950W SDS-plus rotary hammer with 4.5 J impact energy",
+        "2-mode operation for concrete drilling (up to 26 mm) & chiseling",
+        "4,500 bpm impact rate for rapid masonry progress",
+        "Includes Grease Case, Pin-Type Wrench & Protective Cap"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470676-54/application-image/full/rotary-hammer-with-sds-plus-standard-line-bh-426-0615v0000s.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470733-54/application-image/full/rotary-hammer-with-sds-plus-standard-line-bh-426-0615v0000s.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470734-117/dimensional-drawing-image/full/rotary-hammer-with-sds-plus-standard-line-bh-426-0615v0000s.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470735-117/application-image/full/rotary-hammer-with-sds-plus-standard-line-bh-426-0615v0000s.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470736-117/application-image/full/rotary-hammer-with-sds-plus-standard-line-bh-426-0615v0000s.jpg"
+      ]
+    },
+    {
+      "model": "BM 370",
+      "partNumber": "0 615 V00 00N",
+      "slugPn": "0615V0000N",
+      "name": "Bosch BM 370 Rotary Drill (Standard Line)",
+      "type": "Rotary Drill",
+      "categorySlug": "power-tools",
+      "accessories": "Standard Chuck Key",
+      "isFeatured": false,
+      "specs": {
+        "PART NUMBER": "0 615 V00 00N",
+        "RATED INPUT POWER": "370 W",
+        "NO-LOAD SPEED": "0-3200 rpm",
+        "CHUCK CAPACITY": "0.8-10 mm",
+        "MAX. DRILLING IN STEEL": "10 mm",
+        "MAX. DRILLING IN ALUMINIUM": "13 mm",
+        "MAX. DRILLING IN WOOD": "20 mm",
+        "WEIGHT": "1.3 kg"
+      },
+      "features": [
+        "Lightweight 1.3 kg rotary drill with 370W motor",
+        "0.8-10 mm chuck capacity and 0-3200 rpm variable speed",
+        "Ideal for precision drilling in steel (10 mm), aluminium (13 mm) & wood (20 mm)"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/468726-54/application-image/full/drill-standard-line-bm-370-0615v0000n.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470741-54/application-image/full/drill-standard-line-bm-370-0615v0000n.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/470743-117/dimensional-drawing-image/full/drill-standard-line-bm-370-0615v0000n.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474652-117/application-image/full/drill-standard-line-bm-370-0615v0000n.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474653-117/application-image/full/drill-standard-line-bm-370-0615v0000n.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/474654-117/application-image/full/drill-standard-line-bm-370-0615v0000n.jpg"
+      ]
+    },
+    {
+      "model": "CO 200",
+      "partNumber": "0 615 V00 01X",
+      "slugPn": "0615V0001X",
+      "name": "Bosch CO 200 Metal Cut-off Saw (Standard Line)",
+      "type": "Metal Cut-off Saw",
+      "categorySlug": "power-tools",
+      "accessories": "Standard Cutting Wheel & Wrench",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 01X",
+        "RATED INPUT POWER": "2000 W",
+        "NO-LOAD SPEED": "4100 rpm",
+        "HOUSING": "Plastic",
+        "MAX. CUTTING CAPACITY (ROUND BAR)": "Ø65 mm",
+        "MAX. CUTTING CAPACITY (PIPE)": "Ø127 mm",
+        "WEIGHT": "14.8 kg"
+      },
+      "features": [
+        "High-power 2000W chop saw built for steel bars & pipes",
+        "Cuts up to Ø65 mm round bar and Ø127 mm pipe at 4,100 rpm",
+        "Sturdy base with 14.8 kg stable workshop footprint"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/555383-54/application-image/full/chop-saw-standard-line-co-200-0615v0001x.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/566395-54/application-image/full/chop-saw-standard-line-co-200-0615v0001x.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/555384-117/dimensional-drawing-image/full/chop-saw-standard-line-co-200-0615v0001x.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/566391-117/application-image/full/chop-saw-standard-line-co-200-0615v0001x.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/566392-117/application-image/full/chop-saw-standard-line-co-200-0615v0001x.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/566393-117/application-image/full/chop-saw-standard-line-co-200-0615v0001x.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/566394-117/application-image/full/chop-saw-standard-line-co-200-0615v0001x.jpg"
+      ]
+    },
+    {
+      "model": "SH 500",
+      "partNumber": "0 615 V00 01W",
+      "slugPn": "0615V0001W",
+      "name": "Bosch SH 500 Demolition Hammer (Standard Line)",
+      "type": "Demolition Hammer / Rotary Hammer",
+      "categorySlug": "power-tools",
+      "accessories": "Carrying Case & Point Chisel",
+      "isFeatured": true,
+      "specs": {
+        "PART NUMBER": "0 615 V00 01W",
+        "RATED INPUT POWER": "1100 W",
+        "IMPACT RATE": "3950 bpm",
+        "TOOL HOLDER": "Hex",
+        "IMPACT ENERGY": "11 J",
+        "VIBRATION CONTROL": "Yes",
+        "WEIGHT": "6 kg"
+      },
+      "features": [
+        "1100W Hex demolition breaker delivering 11 J impact energy",
+        "3,950 bpm impact rate with integrated Vibration Control",
+        "Balanced 6 kg body for wall & concrete chipping applications"
+      ],
+      "images": [
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/523402-54/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/558468-54/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.png",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/523644-117/dimensional-drawing-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/558458-117/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/558459-117/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/558462-117/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.jpg",
+        "https://www.bosch-pt.co.in/in/en/ocsmedia/558465-117/application-image/full/demolition-hammer-breaker-with-hex-standard-line-sh-500-0615v0001w.jpg"
+      ]
+    }
+  ]
+}

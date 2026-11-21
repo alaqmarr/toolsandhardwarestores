@@ -1,13 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Wrench, ShieldCheck, Tag, CheckCircle2, MessageSquare, ArrowLeft } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
 import StickyWhatsAppBar from '@/components/StickyWhatsAppBar'
-import WhatsAppIcon from '@/components/WhatsAppIcon'
-import ShareButton from '@/components/ShareButton'
-import { getWhatsAppInquiryUrl } from '@/lib/whatsapp'
+import SpareDetailClient from '@/components/SpareDetailClient'
 import type { Metadata } from 'next'
 
 export const revalidate = 3600 // SSG ISR revalidation
@@ -103,125 +100,79 @@ export default async function SpareDetailPage({ params }: SpareDetailPageProps) 
     notFound()
   }
 
-  let imageList: string[] = []
-  try {
-    imageList = JSON.parse(spare.images)
-  } catch {
-    imageList = [spare.images]
-  }
-  const mainImg = imageList[0]
-
-  const waUrl = getWhatsAppInquiryUrl({
-    phone: settings.primaryPhone,
-    itemName: spare.name,
-    itemType: 'Spare Part',
-    itemSlug: spare.slug,
-    extraNotes: `Category: ${
-      spare.spareCategory ? `${spare.spareCategory.parent ? `${spare.spareCategory.parent.name} -> ` : ''}${spare.spareCategory.name}` : 'Uncategorized'
-    }`,
-  })
+  const relatedSpares = spare.spareCategoryId
+    ? await prisma.spare.findMany({
+        where: {
+          spareCategoryId: spare.spareCategoryId,
+          id: { not: spare.id },
+        },
+        include: {
+          spareCategory: true,
+        },
+        orderBy: { name: 'asc' },
+        take: 5,
+      })
+    : []
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 pb-24">
-      {/* Breadcrumbs & Share Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-slate-500 border-b border-slate-200 pb-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Link href="/" className="hover:text-slate-900 transition">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href="/spares" className="hover:text-slate-900 transition">
-            Spares
-          </Link>
-          <span>/</span>
-          <span className="text-red-600 font-bold truncate">{spare.name}</span>
-        </div>
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-10 space-y-12 pb-24">
+      <SpareDetailClient spare={spare} primaryPhone={settings.primaryPhone} />
 
-        <ShareButton
-          title={spare.name}
-          text={`Check out ${spare.name} at Tools & Hardware Stores!`}
-          buttonText="Share Spare"
-        />
-      </div>
-
-      {/* Main Details Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {/* Left Image Gallery */}
-        <div className="lg:col-span-6 space-y-4">
-          <div className="w-full h-80 sm:h-96 rounded-3xl overflow-hidden bg-white border border-slate-200 flex items-center justify-center relative shadow-lg">
-            <img
-              src={mainImg}
-              alt={spare.name}
-              className="max-h-full max-w-full object-contain p-4"
-            />
-          </div>
-        </div>
-
-        {/* Right Info */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="space-y-3">
-            <div className="text-xs font-extrabold text-red-600 uppercase tracking-wider">
-              {spare.spareCategory?.parent ? `${spare.spareCategory.parent.name} • ` : ''}
-              {spare.spareCategory?.name || 'Uncategorized'}
+      {relatedSpares.length > 0 && (
+        <section className="border-t border-slate-200 pt-10 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="text-xs font-black uppercase tracking-widest text-red-600">
+                More in {spare.spareCategory?.name || 'Spare Parts'}
+              </div>
+              <h2 className="text-2xl font-black text-slate-900">
+                Related Replacement Spare Parts
+              </h2>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-              {spare.name}
-            </h1>
-            <p className="text-base text-slate-700 leading-relaxed">
-              {spare.description || 'Industrial replacement spare available for immediate dispatch.'}
-            </p>
+            <Link href="/spares" className="text-xs font-extrabold text-red-600 hover:underline">
+              Browse All Spares →
+            </Link>
           </div>
 
-          <div className="pt-2">
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-base font-extrabold py-4 px-6 rounded-2xl flex items-center justify-center gap-2.5 shadow-md hover:scale-[1.01] active:scale-95 transition"
-            >
-              <WhatsAppIcon className="w-5 h-5 text-white" />
-              <span>Enquire on WhatsApp</span>
-            </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+            {relatedSpares.map((rs) => {
+              let imgs: string[] = []
+              try {
+                imgs = JSON.parse(rs.images)
+              } catch {
+                imgs = [rs.images]
+              }
+              return (
+                <Link
+                  key={rs.id}
+                  href={`/spares/${rs.slug}`}
+                  className="bg-white rounded-2xl border border-slate-200 hover:border-red-400 transition overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-md"
+                >
+                  <div className="h-44 bg-white border-b border-slate-100 flex items-center justify-center p-4">
+                    <img
+                      src={imgs[0]}
+                      alt={rs.name}
+                      loading="lazy"
+                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-4 space-y-1.5">
+                    <div className="text-[10px] font-bold uppercase text-red-600">
+                      {rs.spareCategory?.name || 'Spare Part'}
+                    </div>
+                    <div className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition line-clamp-2">
+                      {rs.name}
+                    </div>
+                    {rs.priceNote && (
+                      <div className="text-[11px] text-slate-500 truncate">{rs.priceNote}</div>
+                    )}
+                  </div>
+                </Link>
+              )
+            })}
           </div>
-        </div>
-      </div>
-
-      {/* Compatible Tools Grid */}
-      <div className="border-t border-slate-200 pt-10 space-y-6">
-        <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
-          <Wrench className="w-6 h-6 text-red-500" />
-          <span>Compatible Power Tools & Equipment ({spare.products.length})</span>
-        </h2>
-
-        {spare.products.length === 0 ? (
-          <p className="text-sm text-slate-500 italic">
-            Universal spare part - contact us on WhatsApp to verify compatibility for your specific model.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {spare.products.map(({ product }) => (
-              <Link
-                key={product.id}
-                href={`/products/${product.slug}`}
-                className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-red-400 transition flex items-center justify-between group shadow-sm hover:shadow-md"
-              >
-                <div>
-                  <div className="text-xs text-red-600 font-bold uppercase">
-                    {product.brand.name}
-                  </div>
-                  <div className="text-base font-bold text-slate-900 group-hover:text-red-600 transition">
-                    {product.name}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    {product.category.name}
-                  </div>
-                </div>
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+        </section>
+      )}
 
       <StickyWhatsAppBar
         primaryPhone={settings.primaryPhone}

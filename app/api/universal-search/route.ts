@@ -244,12 +244,13 @@ export async function GET(request: NextRequest) {
       })
     })
 
-    // If query parameter is passed, filter using token-based matching across searchableText
+    // If query parameter is passed, filter using token-based matching and return top 20 compact results
     if (qParam) {
       const tokens = qParam.split(/\s+/).filter(Boolean)
-      const filtered = items.filter((item) => {
-        return tokens.every((token) => item.searchableText.includes(token))
-      })
+      const filtered = items
+        .filter((item) => tokens.every((token) => item.searchableText.includes(token)))
+        .slice(0, 20)
+        .map(({ searchableText: _omit, ...rest }) => rest)
       return NextResponse.json(filtered, {
         headers: {
           'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
@@ -257,11 +258,14 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    return NextResponse.json(items, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
-      },
-    })
+    return NextResponse.json(
+      items.slice(0, 50).map(({ searchableText: _omit, ...rest }) => rest),
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
+        },
+      }
+    )
   } catch (error: any) {
     console.error('Universal search error:', error)
     return NextResponse.json(

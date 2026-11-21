@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   Search,
@@ -31,41 +31,43 @@ interface NavbarUniversalSearchProps {
 
 export default function NavbarUniversalSearch({ onNavigate }: NavbarUniversalSearchProps = {}) {
   const [query, setQuery] = useState('')
-  const [items, setItems] = useState<UniversalSearchItem[]>([])
-  const [loaded, setLoaded] = useState(false)
+  const [results, setResults] = useState<UniversalSearchItem[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
   const router = useRouter()
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Fetch universal index on mount or first focus for 0ms instantaneous stroke filtering
-  const loadIndex = async (forceRetry = false) => {
-    if (loaded && !forceRetry) return
-    try {
-      const res = await fetch('/api/universal-search', {
-        cache: 'no-store',
-      })
-      if (res.ok) {
-        const data = await res.json()
-        setItems(data)
-        setLoaded(true)
+  // Query server-side universal search with debounce only when user types >= 2 chars
+  useEffect(() => {
+    const trimmed = query.trim()
+    if (trimmed.length < 2) {
+      setResults([])
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/universal-search?q=${encodeURIComponent(trimmed)}`, {
+          signal: controller.signal,
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setResults(Array.isArray(data) ? data.slice(0, 12) : [])
+        }
+      } catch (err: any) {
+        if (err?.name !== 'AbortError') {
+          console.error('Failed to search inventory', err)
+        }
       }
-    } catch (err) {
-      console.error('Failed to load universal search index', err)
-    }
-  }
+    }, 180)
 
-  useEffect(() => {
-    loadIndex()
-  }, [])
-
-  // If user starts typing and items are empty (e.g. initial fetch failed), automatically retry
-  useEffect(() => {
-    if (query.trim().length >= 1 && items.length === 0) {
-      loadIndex(true)
+    return () => {
+      clearTimeout(timer)
+      controller.abort()
     }
-  }, [query, items.length])
+  }, [query])
 
   // Handle outside click to close popover
   useEffect(() => {
@@ -80,29 +82,6 @@ export default function NavbarUniversalSearch({ onNavigate }: NavbarUniversalSea
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
-
-  // Instantaneous multi-token stroke filtering in memory across all fields & specifications
-  const results = useMemo(() => {
-    if (!query.trim() || query.trim().length < 2) return []
-    const tokens = query.toLowerCase().trim().split(/\s+/).filter(Boolean)
-    if (tokens.length === 0) return []
-
-    return items
-      .filter((item) => {
-        const fullText = [
-          item.title,
-          item.subtitle,
-          item.badge || '',
-          item.type,
-          item.searchableText || '',
-        ]
-          .join(' ')
-          .toLowerCase()
-
-        return tokens.every((token) => fullText.includes(token))
-      })
-      .slice(0, 12) // Show top 12 matches across inventory
-  }, [query, items])
 
   // Reset selected index when query changes
   useEffect(() => {
@@ -168,7 +147,6 @@ export default function NavbarUniversalSearch({ onNavigate }: NavbarUniversalSea
           placeholder="Search over 10,000+ power tools, spare armatures, brands, or catalogues..."
           value={query}
           onFocus={() => {
-            loadIndex()
             if (query.trim()) setIsOpen(true)
           }}
           onChange={(e) => {

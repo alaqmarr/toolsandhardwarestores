@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, Package, Wrench, ShieldCheck, Filter, Star, Award, CheckCircle } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import { getContactSettings } from '@/lib/getSettings'
-import ProductCard from '@/components/ProductCard'
+import { queryProducts, DEFAULT_PAGE_SIZE } from '@/lib/catalogQueries'
+import ProductCatalogClient from '@/components/ProductCatalogClient'
 import ShareButton from '@/components/ShareButton'
 import type { Metadata } from 'next'
 
@@ -74,17 +75,17 @@ export default async function BrandDetailPage({
     notFound()
   }
 
-  const products = await prisma.product.findMany({
-    where: { brandId: brand.id },
-    include: {
-      brand: true,
-      category: true,
-    },
-    orderBy: { name: 'asc' },
-  })
+  const [initialCatalog, brandCategories] = await Promise.all([
+    queryProducts({ brand: brand.slug, page: 1, limit: DEFAULT_PAGE_SIZE, sort: 'featured' }),
+    prisma.category.findMany({
+      where: { products: { some: { brandId: brand.id } } },
+      select: { name: true, slug: true },
+      orderBy: { name: 'asc' },
+    }),
+  ])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-10 space-y-10 pb-24">
       {/* Breadcrumbs */}
       {/* Breadcrumb & Share Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-slate-500 border-b border-slate-200 pb-4">
@@ -167,44 +168,25 @@ export default async function BrandDetailPage({
       </div>
 
 
-      {/* Product List */}
+      {/* Product List with Search & Pagination */}
       <div className="space-y-6">
         <div className="flex items-center justify-between border-b border-slate-200 pb-4">
           <h2 className="text-xl sm:text-2xl font-black text-slate-900">
             Available {brand.name} Tools & Equipment
           </h2>
           <span className="text-xs font-bold text-slate-500">
-            Showing {products.length} {products.length === 1 ? 'Model' : 'Models'}
+            {initialCatalog.total} {initialCatalog.total === 1 ? 'Model' : 'Models'}
           </span>
         </div>
 
-        {products.length === 0 ? (
-          <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 space-y-4">
-            <Package className="w-12 h-12 text-slate-300 mx-auto" />
-            <div className="text-lg font-bold text-slate-900">
-              No matching products found in this category
-            </div>
-            <p className="text-sm text-slate-500 max-w-md mx-auto">
-              We are constantly replenishing our warehouse inventory. Contact us via WhatsApp for instant stock inquiry.
-            </p>
-            <Link
-              href={`/brands/${brand.slug}`}
-              className="inline-block bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition"
-            >
-              View All {brand.name} Tools
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                primaryPhone={settings.primaryPhone}
-              />
-            ))}
-          </div>
-        )}
+        <ProductCatalogClient
+          initialItems={initialCatalog.items}
+          initialTotal={initialCatalog.total}
+          pageSize={DEFAULT_PAGE_SIZE}
+          categories={brandCategories}
+          lockedBrandSlug={brand.slug}
+          primaryPhone={settings.primaryPhone}
+        />
       </div>
 
       {/* Back CTA */}

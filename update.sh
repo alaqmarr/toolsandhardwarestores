@@ -58,8 +58,10 @@ log "Generating Prisma client and syncing database schema..."
 npx prisma generate
 npx prisma db push
 
-log "Running one-time Powerbilt catalog import (skips automatically if already applied)..."
+log "Running one-time catalog imports (skips automatically if already applied)..."
 npm run import:powerbilt
+npm run import:dongcheng
+npm run import:bosch
 
 # 5. Production build
 log "Building Next.js production bundle..."

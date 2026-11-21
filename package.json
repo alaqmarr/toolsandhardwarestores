@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx prisma db push && tsx prisma/import-powerbilt.ts",
+    "prebuild": "npx prisma db push && tsx prisma/import-powerbilt.ts && tsx prisma/import-dongcheng.ts && tsx prisma/import-bosch.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
     "import:powerbilt": "tsx prisma/import-powerbilt.ts",
-    "postinstall": "prisma generate && npx prisma db push && tsx prisma/import-powerbilt.ts"
+    "import:dongcheng": "tsx prisma/import-dongcheng.ts",
+    "import:bosch": "tsx prisma/import-bosch.ts",
+    "postinstall": "prisma generate && npx prisma db push && tsx prisma/import-powerbilt.ts && tsx prisma/import-dongcheng.ts && tsx prisma/import-bosch.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

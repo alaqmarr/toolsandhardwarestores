@@ -16,7 +16,7 @@ export default async function CategoriesPage() {
   })
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 pb-24">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-12 space-y-12 pb-24">
       {/* Header */}
       <div className="border-b border-slate-200 pb-8 space-y-3">
         <div className="text-xs font-black text-red-600 uppercase tracking-widest">
@@ -33,23 +33,23 @@ export default async function CategoriesPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {categories.map((cat) => (
           <Link
             key={cat.id}
             href={`/categories/${cat.slug}`}
             className="bg-white rounded-2xl overflow-hidden group flex flex-col border border-slate-200 hover:border-red-500 transition-all duration-300 shadow-sm hover:shadow-md"
           >
-            <div className="relative h-56 overflow-hidden bg-slate-100">
+            <div className="relative h-56 overflow-hidden bg-white border-b border-slate-100 flex items-center justify-center p-4">
               <img
                 src={
                   cat.image ||
                   'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80'
                 }
                 alt={cat.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-70" />
 
               {/* Product Count Badge */}
               <div className="absolute bottom-3 left-3 bg-slate-900/90 text-white text-xs font-bold px-3 py-1 rounded-lg border border-slate-700 flex items-center gap-1.5 shadow-sm">

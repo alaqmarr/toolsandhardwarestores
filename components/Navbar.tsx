@@ -109,8 +109,8 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
       {/* Top micro bar with rating & location banner */}
-      <div className="bg-slate-900 text-white py-1.5 px-4 text-xs">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div className="bg-slate-900 text-white py-1.5 px-4 sm:px-6 lg:px-10 text-xs">
+        <div className="w-full flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-4 text-slate-200">
             <span className="flex items-center gap-1.5 font-bold text-amber-400">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -162,7 +162,7 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
       </div>
 
       {/* Main navigation Tier 1: Logo, Wide Prominent Universal Search Bar, and Right CTA Buttons */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between h-20 gap-4 sm:gap-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
@@ -179,7 +179,7 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
           </Link>
 
           {/* Huge, Un-squeezed Center Search Bar (Tier 1) */}
-          <div className="hidden md:flex flex-1 max-w-2xl mx-4">
+          <div className="hidden md:flex flex-1 max-w-4xl mx-4">
             <NavbarUniversalSearch />
           </div>
 
@@ -239,7 +239,7 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
 
       {/* Tier 2: Dedicated Horizontal Navigation Bar (Desktop & Large screens) */}
       <div className="hidden md:block bg-gradient-to-r from-slate-100 via-blue-50/70 to-slate-100 border-t border-b border-blue-200/60 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-10">
           <nav className="flex items-center justify-between py-2.5">
             <div className="flex items-center gap-2 flex-wrap">
               {navLinks.map((link) => {

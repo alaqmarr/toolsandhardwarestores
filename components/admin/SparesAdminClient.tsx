@@ -16,6 +16,7 @@ import {
   Layers,
 } from 'lucide-react'
 import ReactDropzoneUploader from '@/components/ReactDropzoneUploader'
+import Pagination from '@/components/Pagination'
 import ConfirmDialog from './ConfirmDialog'
 
 interface SpareCategoryItem {
@@ -60,6 +61,9 @@ export default function SparesAdminClient({
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCat, setSelectedCat] = useState<string>('ALL')
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [currentPage, setCurrentPage] = useState(1)
+  const [productPickerQuery, setProductPickerQuery] = useState('')
+  const adminPageSize = 25
 
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -193,6 +197,21 @@ export default function SparesAdminClient({
     })
   }, [spares, searchQuery, selectedCat])
 
+  const totalAdminPages = Math.max(1, Math.ceil(filteredSpares.length / adminPageSize))
+  const safePage = Math.min(currentPage, totalAdminPages)
+  const paginatedSpares = useMemo(() => {
+    const start = (safePage - 1) * adminPageSize
+    return filteredSpares.slice(start, start + adminPageSize)
+  }, [filteredSpares, safePage])
+
+  const filteredModalProducts = useMemo(() => {
+    const q = productPickerQuery.trim().toLowerCase()
+    const selectedSet = new Set(selectedProductIds)
+    const selectedFirst = products.filter((p) => selectedSet.has(p.id) && (!q || p.name.toLowerCase().includes(q)))
+    const rest = products.filter((p) => !selectedSet.has(p.id) && (!q || p.name.toLowerCase().includes(q)))
+    return [...selectedFirst, ...rest].slice(0, 60)
+  }, [products, productPickerQuery, selectedProductIds])
+
   const toggleSelection = (id: string) => {
     const newSet = new Set(selectedIds)
     if (newSet.has(id)) newSet.delete(id)
@@ -270,7 +289,10 @@ export default function SparesAdminClient({
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setCurrentPage(1)
+              }}
               placeholder="Search spares by name, ID, or description..."
               className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
             />
@@ -280,7 +302,10 @@ export default function SparesAdminClient({
           <div>
             <select
               value={selectedCat}
-              onChange={(e) => setSelectedCat(e.target.value)}
+              onChange={(e) => {
+                setSelectedCat(e.target.value)
+                setCurrentPage(1)
+              }}
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-700 bg-white outline-none transition"
             >
               <option value="ALL">All Spare Categories ({categories.length})</option>
@@ -354,7 +379,7 @@ export default function SparesAdminClient({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
-                {filteredSpares.map((item) => (
+                {paginatedSpares.map((item) => (
                   <tr key={item.id} className={`hover:bg-slate-50/80 transition ${selectedIds.has(item.id) ? 'bg-slate-50' : ''}`}>
                     <td className="py-4 pl-6 pr-2">
                       <input
@@ -379,6 +404,7 @@ export default function SparesAdminClient({
                               <img
                                 src={imgUrl}
                                 alt={item.name}
+                                loading="lazy"
                                 className="w-full h-full object-contain p-1"
                               />
                             )
@@ -445,6 +471,15 @@ export default function SparesAdminClient({
           </div>
         )}
       </div>
+
+      <Pagination
+        page={safePage}
+        totalPages={totalAdminPages}
+        totalItems={filteredSpares.length}
+        pageSize={adminPageSize}
+        itemLabel="spare parts"
+        onPageChange={(p) => setCurrentPage(p)}
+      />
 
       {/* CREATE / EDIT MODAL */}
       {isModalOpen && (
@@ -549,8 +584,15 @@ export default function SparesAdminClient({
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Compatible Power Tools ({selectedProductIds.length} selected)
                 </label>
+                <input
+                  type="text"
+                  value={productPickerQuery}
+                  onChange={(e) => setProductPickerQuery(e.target.value)}
+                  placeholder="Filter tools by name or model code (showing up to 60)..."
+                  className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-amber-500 text-xs font-semibold text-slate-800 outline-none transition"
+                />
                 <div className="max-h-36 overflow-y-auto p-3 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
-                  {products.map((pd) => {
+                  {filteredModalProducts.map((pd) => {
                     const isChecked = selectedProductIds.includes(pd.id)
                     return (
                       <label
