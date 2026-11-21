@@ -13,9 +13,9 @@ const session = await getSession()
     const {
       primaryPhone = "+91 98854 16452",
       whatsappNumber = "919885416452",
-      primaryEmail = "sales@toolsandhardwarestores.com",
-      supportEmail = "support@toolsandhardwarestores.com",
-      addressText = "5-5, 187/2, Victoria Ranigunj, Old Ghasmandi, Ranigunj, Secunderabad, Telangana 500003",
+      primaryEmail = "ths.exclusive1973@gmail.com",
+      supportEmail = "ths.exclusive1973@gmail.com",
+      addressText = "5-5-187/2, Victoria Ranigunj, Old Ghasmandi, Bolaram Nagar, Rani Gunj, Secunderabad, Telangana 500003",
       mapEmbedUrl,
       smtpHost = "smtp.gmail.com",
       smtpPort = 465,

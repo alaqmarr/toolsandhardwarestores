@@ -105,6 +105,7 @@ model StoreLocation {
   latitude  Float
   longitude Float
   hours     String
+  mapUrl    String?
   isPrimary Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -27,7 +27,7 @@ export function getWhatsAppInquiryUrl(params: {
     message += `\n*Note*: ${params.extraNotes}\n`
   }
 
-  message += `\nPlease let me know about current pricing, wholesale discounts, and same-day/standard delivery options. Thank you!`
+  message += `\nPlease let me know about current pricing, availability, and pickup or delivery options. Thank you!`
 
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
 }

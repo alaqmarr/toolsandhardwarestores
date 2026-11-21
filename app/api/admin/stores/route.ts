@@ -19,6 +19,7 @@ const session = await getSession()
       latitude,
       longitude,
       hours = "Mon-Sat: 9:30 AM - 8:30 PM, Sun: 10:00 AM - 2:00 PM",
+      mapUrl,
       isPrimary = false,
     } = body;
 
@@ -58,6 +59,7 @@ const session = await getSession()
         latitude: Number(latitude),
         longitude: Number(longitude),
         hours: hours.trim(),
+        mapUrl: mapUrl?.trim() || null,
         isPrimary: Boolean(isPrimary),
       },
     });

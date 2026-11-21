@@ -2,17 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import {
   Wrench,
-  Star,
   MapPin,
-  Clock,
-  Phone,
   ShieldCheck,
   Award,
   Truck,
   CheckCircle2,
   Users,
   Building2,
-  ThumbsUp,
 } from 'lucide-react'
 import { getContactSettings } from '@/lib/getSettings'
 import { prisma } from '@/lib/db'
@@ -40,8 +36,8 @@ export default async function AboutPage() {
         <div className="w-full px-4 sm:px-6 lg:px-10 space-y-8">
           <div className="max-w-4xl space-y-4">
             <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 px-3 py-1.5 rounded-full text-xs font-bold text-red-800">
-              <Star className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-              <span>4.9★ RATED WHOLESALE & MULTI-BRAND RETAIL ESTABLISHMENT</span>
+              <Award className="w-3.5 h-3.5 text-red-600" />
+              <span>WHOLESALE &amp; MULTI-BRAND RETAIL ESTABLISHMENT</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
@@ -95,16 +91,16 @@ export default async function AboutPage() {
 
           <div className="bg-white rounded-2xl p-6 border border-slate-200 space-y-3 shadow-sm hover:shadow-md transition">
             <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center">
-              <Star className="w-6 h-6 text-red-500 fill-red-500" />
+              <Building2 className="w-6 h-6 text-red-500" />
             </div>
             <h3 className="text-lg font-bold text-slate-900">
-              4.9★ Customer Reputation
+              Two Secunderabad Locations
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              379+ authentic Google reviews praising our transparent pricing and genuine spares.
+              Visit THS HQ in Victoria Ranigunj or THS Exclusive Showroom on K Street, Ranigunj.
             </p>
             <div className="pt-2 text-xs font-bold text-red-600">
-              379+ Positive Reviews
+              Open Mon–Sun • Counter Pickup
             </div>
           </div>
 

@@ -145,7 +145,7 @@ export default async function BrandDetailPage({
               </h1>
               <p className="text-slate-600 text-base leading-relaxed max-w-2xl">
                 {brand.description ||
-                  `We supply authentic ${brand.name} power tools, heavy-duty machinery, and replacement spare parts. Backed by 35+ years of wholesale industrial distribution.`}
+                  `We supply authentic ${brand.name} power tools, heavy-duty machinery, and replacement spare parts at Tools & Hardware Stores, Secunderabad.`}
               </p>
             </div>
 

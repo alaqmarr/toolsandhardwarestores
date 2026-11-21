@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: SpareDetailPageProps): Promis
   const mainImg = imageList[0]
 
   const titleText = `${spare.name} | Genuine Spare Part - Industrial Tool Specialists`
-  const descText = `${spare.description || 'Authentic replacement part'} Stocked at our Flagship Showroom & Support Hub. Category: ${spare.spareCategory?.name || 'Uncategorized'}. Enquire on WhatsApp for immediate availability.`
+  const descText = `${spare.description || 'Authentic replacement part'} Available at Tools & Hardware Stores, Ranigunj, Secunderabad. Category: ${spare.spareCategory?.name || 'Uncategorized'}. Enquire on WhatsApp for availability.`
 
   return {
     title: titleText,

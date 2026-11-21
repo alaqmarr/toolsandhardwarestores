@@ -6,7 +6,6 @@ import {
   Phone,
   Mail,
   Clock,
-  Star,
   ShieldCheck,
   Award,
   Truck,
@@ -40,12 +39,12 @@ export default function Footer({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center shrink-0">
-                <Star className="w-6 h-6 text-red-500 fill-red-500" />
+                <Wrench className="w-6 h-6 text-red-500" />
               </div>
               <div>
-                <h4 className="text-white font-extrabold">4.9★ Customer Rating</h4>
+                <h4 className="text-white font-extrabold">Tools &amp; Genuine Spares</h4>
                 <p className="text-xs text-slate-400">
-                  Based on 379+ verified customer reviews
+                  Industrial machines, blades &amp; factory OEM parts
                 </p>
               </div>
             </div>
@@ -55,9 +54,9 @@ export default function Footer({
                 <Award className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h4 className="text-white font-extrabold">Core Brand Distributor</h4>
+                <h4 className="text-white font-extrabold">Authorized Tool Brands</h4>
                 <p className="text-xs text-slate-400">
-                  Bosch, DeWalt, Hitachi (Hikoki) & Makita
+                  Powerbilt, DongCheng, Bosch, Checkmate &amp; more
                 </p>
               </div>
             </div>
@@ -120,7 +119,27 @@ export default function Footer({
             <div className="space-y-2 text-xs">
               <div className="flex items-start gap-2.5 text-slate-300">
                 <MapPin className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <span>{addressText}</span>
+                <div className="space-y-1">
+                  <div>{addressText}</div>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 pt-0.5">
+                    <a
+                      href="https://maps.app.goo.gl/y3eDjWizCPCTYuUo8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-400 hover:text-red-300 font-bold underline"
+                    >
+                      THS HQ (Map)
+                    </a>
+                    <a
+                      href="https://g.co/kgs/7zVBJG"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-400 hover:text-red-300 font-bold underline"
+                    >
+                      THS Exclusive Showroom (Map)
+                    </a>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-2.5 text-slate-300">
                 <Phone className="w-4 h-4 text-blue-400 shrink-0" />
@@ -140,46 +159,41 @@ export default function Footer({
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/brands/powerbilt" className="hover:text-red-400 transition">
+                  Powerbilt Industrial
+                </Link>
+              </li>
+              <li>
+                <Link href="/brands/dongcheng" className="hover:text-red-400 transition">
+                  DongCheng Power Tools
+                </Link>
+              </li>
+              <li>
                 <Link href="/brands/bosch" className="hover:text-red-400 transition">
-                  Bosch Professional
-                </Link>
-              </li>
-              <li>
-                <Link href="/brands/dewalt" className="hover:text-red-400 transition">
-                  DeWalt Guaranteed Tough
-                </Link>
-              </li>
-              <li>
-                <Link href="/brands/hitachi-hikoki" className="hover:text-red-400 transition">
-                  Hitachi (Hikoki)
-                </Link>
-              </li>
-              <li>
-                <Link href="/brands/makita" className="hover:text-red-400 transition">
-                  Makita Industrial
+                  Bosch Standard &amp; Pro
                 </Link>
               </li>
               <li className="pt-2 text-xs font-bold text-slate-500 uppercase">
                 Specialty Professional
               </li>
               <li>
-                <Link href="/brands/powerbilt" className="hover:text-red-400 transition">
-                  Powerbilt Ringsaw Machines
+                <Link href="/brands/checkmate" className="hover:text-red-400 transition">
+                  Checkmate Equipment
+                </Link>
+              </li>
+              <li>
+                <Link href="/brands/tewort" className="hover:text-red-400 transition">
+                  Tewort Heavy Tools
                 </Link>
               </li>
               <li>
                 <Link href="/brands/powermatic" className="hover:text-red-400 transition">
-                  Powermatic Compressors
+                  Powermatic Machinery
                 </Link>
               </li>
               <li>
-                <Link href="/brands/iron-king" className="hover:text-red-400 transition">
-                  Iron King Hardware
-                </Link>
-              </li>
-              <li>
-                <Link href="/brands/check-mate" className="hover:text-red-400 transition">
-                  Check Mate Laser Levels
+                <Link href="/brands/ironking" className="hover:text-red-400 transition">
+                  Iron King Tools
                 </Link>
               </li>
             </ul>
@@ -197,18 +211,18 @@ export default function Footer({
                 </Link>
               </li>
               <li>
-                <Link href="/categories/heavy-machinery" className="hover:text-red-400 transition">
-                  Heavy Machinery
+                <Link href="/categories/cordless-tools" className="hover:text-red-400 transition">
+                  Cordless Tools
                 </Link>
               </li>
               <li>
-                <Link href="/categories/ringsaw-specialty-equipment" className="hover:text-red-400 transition">
-                  Ringsaw & Specialty Equipment
+                <Link href="/categories/diamond-saw-blades" className="hover:text-red-400 transition">
+                  Diamond Saw Blades
                 </Link>
               </li>
               <li>
-                <Link href="/categories/hand-tools-measuring" className="hover:text-red-400 transition">
-                  Hand Tools & Measuring
+                <Link href="/categories/agriculture-tools" className="hover:text-red-400 transition">
+                  Agriculture &amp; Forestry
                 </Link>
               </li>
               <li>

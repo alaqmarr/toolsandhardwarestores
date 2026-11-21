@@ -21,16 +21,15 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Tools & Hardware Stores | Wholesale & Retail Industrial Equipment',
   description:
-    'Rated 4.9★ based on 379+ reviews. Major distributors for Bosch, DeWalt, Hitachi (Hikoki), Makita, Powerbilt Ringsaws, Powermatic, and genuine factory spare parts.',
+    'Authorized wholesale & retail supplier for Powerbilt, DongCheng, Bosch, Checkmate, Tewort, Powermatic, Iron King power tools, machinery, and genuine factory spare parts in Ranigunj, Secunderabad.',
   keywords: [
     'Tools & Hardware Stores',
     'Industrial Hardware Wholesale',
-    'Bosch authorized dealer',
-    'DeWalt distributor',
-    'Hitachi Hikoki tools',
-    'Makita power tools',
-    'Powerbilt ringsaw machines',
-    'Powermatic compressors',
+    'Ranigunj Secunderabad Power Tools',
+    'Powerbilt tools & spares',
+    'DongCheng power tools',
+    'Bosch power tools dealer',
+    'Checkmate Tewort Powermatic Iron King',
     'armatures rotors spares online',
   ],
   icons: {

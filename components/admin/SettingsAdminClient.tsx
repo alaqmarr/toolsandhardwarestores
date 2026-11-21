@@ -50,12 +50,12 @@ export default function SettingsAdminClient({ settings: initial }: SettingsAdmin
   const [primaryPhone, setPrimaryPhone] = useState(initial?.primaryPhone || '+91 98854 16452')
   const [whatsappNumber, setWhatsappNumber] = useState(initial?.whatsappNumber || '919885416452')
   const [primaryEmail, setPrimaryEmail] = useState(
-    initial?.primaryEmail || 'sales@toolsandhardwarestores.com'
+    initial?.primaryEmail || 'ths.exclusive1973@gmail.com'
   )
   const [supportEmail, setSupportEmail] = useState(initial?.supportEmail || '')
   const [addressText, setAddressText] = useState(
     initial?.addressText ||
-      '5-5, 187/2, Victoria Ranigunj, Old Ghasmandi, Ranigunj, Secunderabad, Telangana 500003'
+      '5-5-187/2, Victoria Ranigunj, Old Ghasmandi, Bolaram Nagar, Rani Gunj, Secunderabad, Telangana 500003'
   )
   const [mapEmbedUrl, setMapEmbedUrl] = useState(initial?.mapEmbedUrl || '')
 
@@ -240,7 +240,7 @@ export default function SettingsAdminClient({ settings: initial }: SettingsAdmin
                   required
                   value={primaryEmail}
                   onChange={(e) => setPrimaryEmail(e.target.value)}
-                  placeholder="sales@toolsandhardwarestores.com"
+                  placeholder="ths.exclusive1973@gmail.com"
                   className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 outline-none transition"
                 />
               </div>
@@ -253,7 +253,7 @@ export default function SettingsAdminClient({ settings: initial }: SettingsAdmin
                   type="email"
                   value={supportEmail}
                   onChange={(e) => setSupportEmail(e.target.value)}
-                  placeholder="support@toolsandhardwarestores.com"
+                  placeholder="ths.exclusive1973@gmail.com"
                   className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 outline-none transition"
                 />
               </div>

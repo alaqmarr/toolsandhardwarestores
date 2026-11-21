@@ -1,9 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import {
-  Wrench,
   ShieldCheck,
-  Star,
   ArrowRight,
   MapPin,
   Award,
@@ -20,23 +18,25 @@ export const revalidate = 60 // ISR revalidation every 60 seconds
 export default async function HomePage() {
   const settings = await getContactSettings()
 
-  // Fetch featured products, categories, and brands dynamically from database
-  const featuredProducts = await prisma.product.findMany({
-    where: { isFeatured: true },
-    include: {
-      brand: true,
-      category: true,
-    },
-    take: 8,
-  })
-
-  const categories = await prisma.category.findMany({
-    orderBy: { name: 'asc' },
-  })
-
-  const brands = await prisma.brand.findMany({
-    orderBy: { name: 'asc' },
-  })
+  // Fetch featured products, categories, brands, and live counts dynamically from database
+  const [featuredProducts, categories, brands, productCount, spareCount] = await Promise.all([
+    prisma.product.findMany({
+      where: { isFeatured: true },
+      include: {
+        brand: true,
+        category: true,
+      },
+      take: 8,
+    }),
+    prisma.category.findMany({
+      orderBy: { name: 'asc' },
+    }),
+    prisma.brand.findMany({
+      orderBy: { name: 'asc' },
+    }),
+    prisma.product.count(),
+    prisma.spare.count(),
+  ])
 
   const whatsappUrl = `https://wa.me/${settings.primaryPhone.replace(
     /[^0-9]/g,
@@ -66,16 +66,16 @@ export default async function HomePage() {
 
         <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12 py-16 sm:py-20 text-center flex flex-col items-center">
           <div className="space-y-8 flex flex-col items-center">
-            {/* Rating & Dispatch Pill */}
+            {/* Store & Location Pill */}
             <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-slate-900/85 border border-slate-700/80 backdrop-blur-md px-5 py-2.5 rounded-full shadow-lg">
               <span className="flex items-center gap-1.5 text-red-400 font-extrabold text-xs sm:text-sm tracking-wide">
-                <Star className="w-4 h-4 fill-red-500 text-red-500" />
-                4.9★ RATED (379+ REVIEWS)
+                <Award className="w-4 h-4 text-red-500" />
+                WHOLESALE &amp; RETAIL INDUSTRIAL TOOLS
               </span>
               <span className="text-slate-600">|</span>
               <span className="text-slate-200 text-xs sm:text-sm font-bold flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-blue-400" />
-                Ranigunj HQ • Ready Stock & Counter Supply
+                Ranigunj HQ • Secunderabad, Telangana
               </span>
             </div>
 
@@ -123,7 +123,7 @@ export default async function HomePage() {
             <div className="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-slate-200 text-xs sm:text-sm font-extrabold tracking-wide">
               <div className="flex items-center gap-2.5">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
-                <span>10,000+ Tools in Stock</span>
+                <span>{productCount.toLocaleString()} Tools &amp; {spareCount.toLocaleString()} Spares</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Award className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 shrink-0" />
@@ -244,7 +244,7 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-wider text-red-600 mb-1">
-              Top Rated by Industrial Contractors Worldwide
+              Heavy-Duty Industrial Equipment
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
               Featured Power Tools & Heavy Machinery
@@ -284,9 +284,8 @@ export default async function HomePage() {
                 Looking for Armatures, Rotors, Stators or Universal Carbon Brushes?
               </h3>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-                We stock genuine factory-direct spares for Bosch, DeWalt, Hitachi (Hikoki),
-                Makita, and Powerbilt Ringsaw cutters. Every spare part listed includes an interactive
-                modal showing exact compatible tool fitments and direct WhatsApp inquiry.
+                We stock genuine factory-direct spares for Powerbilt, Checkmate, Tewort,
+                Powermatic, Iron King, and compatible industrial equipment. Every spare part listed includes compatible tool fitments and direct WhatsApp inquiry.
               </p>
             </div>
 

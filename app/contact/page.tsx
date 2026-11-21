@@ -25,9 +25,10 @@ export default async function ContactPage() {
   })
   
   const primaryStore = storeLocations.find((s) => s.isPrimary) || storeLocations[0] || {
-    name: 'Flagship Showroom & Support Hub',
-    address: 'Ranigunj HQ • Secunderabad & Hyderabad Industrial Supply',
-    hours: 'Monday – Saturday: 9:30 AM – 8:30 PM, Sunday: 10:00 AM – 2:00 PM',
+    name: 'THS HQ',
+    address: '5-5-187/2, Victoria Ranigunj, Old Ghasmandi, Bolaram Nagar, Rani Gunj, Secunderabad, Telangana 500003',
+    hours: 'Mon-Sat: 9:30 AM - 8:30 PM, Sun: 10:00 AM - 2:00 PM',
+    mapUrl: 'https://maps.app.goo.gl/y3eDjWizCPCTYuUo8',
   }
 
   return (
@@ -144,9 +145,12 @@ export default async function ContactPage() {
 
             <div className="pt-2 space-y-2">
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  primaryStore.address
-                )}`}
+                href={
+                  primaryStore.mapUrl ||
+                  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    primaryStore.address
+                  )}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 shadow-sm"

@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const smtpPort = settings?.smtpPort || 587
     const smtpUser = settings?.smtpUser || ''
     const smtpPass = settings?.smtpPass || ''
-    const targetEmail = settings?.primaryEmail || 'info@toolsandhardwarestores.com'
+    const targetEmail = settings?.primaryEmail || 'ths.exclusive1973@gmail.com'
 
     // If SMTP credentials are present, send real email via Nodemailer
     if (smtpUser && smtpPass) {

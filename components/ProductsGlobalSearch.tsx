@@ -25,12 +25,12 @@ export default function ProductsGlobalSearch() {
   }
 
   const quickTags = [
+    'Powerbilt',
+    'DongCheng',
     'Bosch',
-    'DeWalt',
-    'Makita',
-    'Hitachi',
+    'Checkmate',
+    'Tewort',
     'Rotary Hammer',
-    'Demolition Breaker',
     'Angle Grinder',
     'Cordless',
   ]
@@ -55,7 +55,7 @@ export default function ProductsGlobalSearch() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by model, brand (Bosch, DeWalt, Makita), category, or application..."
+          placeholder="Search by model, brand (Powerbilt, DongCheng, Bosch), category, or application..."
           className="w-full bg-white/10 hover:bg-white/15 focus:bg-white/20 text-white placeholder-slate-400 text-sm font-medium rounded-2xl pl-12 pr-28 py-4 border border-white/15 focus:border-red-400 focus:outline-hidden transition"
         />
         <div className="absolute right-2 flex items-center gap-1.5">

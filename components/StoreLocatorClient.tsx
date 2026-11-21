@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Award,
   Compass,
+  Clock,
 } from 'lucide-react'
 
 export interface StoreLocationItem {
@@ -21,6 +22,7 @@ export interface StoreLocationItem {
   longitude: number
   isPrimary: boolean
   hours: string
+  mapUrl?: string | null
 }
 
 interface StoreLocatorClientProps {
@@ -141,12 +143,15 @@ export default function StoreLocatorClient({
               </div>
 
               <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=${closestStore.latitude},${closestStore.longitude}`}
+                href={
+                  closestStore.mapUrl ||
+                  `https://www.google.com/maps/dir/?api=1&destination=${closestStore.latitude},${closestStore.longitude}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition flex items-center gap-2 shadow-md"
               >
-                <span>Get Driving Directions</span>
+                <span>Open on Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -176,7 +181,11 @@ export default function StoreLocatorClient({
       </div>
 
       {/* Stores Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 ${
+          sortedStores.length > 2 ? 'lg:grid-cols-3' : ''
+        } gap-6`}
+      >
         {sortedStores.map((store, index) => {
           const isClosest = userCoords && index === 0
           return (
@@ -238,17 +247,27 @@ export default function StoreLocatorClient({
                       </a>
                     </div>
                   )}
+
+                  {store.hours && (
+                    <div className="flex items-start gap-2.5 text-slate-600 text-xs pt-1">
+                      <Clock className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                      <span>{store.hours}</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className="space-y-2 pt-2">
                 <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${store.latitude},${store.longitude}`}
+                  href={
+                    store.mapUrl ||
+                    `https://www.google.com/maps/dir/?api=1&destination=${store.latitude},${store.longitude}`
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 group shadow-sm"
                 >
-                  <span>Get Driving Directions</span>
+                  <span>Open in Google Maps & Directions</span>
                   <ExternalLink className="w-3.5 h-3.5 text-red-400 group-hover:translate-x-0.5 transition-transform" />
                 </a>
               </div>

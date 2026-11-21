@@ -212,7 +212,7 @@ export default function BrandsAdminClient({ brands: initialBrands }: BrandsAdmin
             <span>Authorized Brands & Distributors</span>
           </h1>
           <p className="text-sm text-slate-600 mt-1">
-            Manage global manufacturing partners (Bosch, Makita, Dewalt, Taparia) and logos.
+            Manage manufacturing partners (Powerbilt, DongCheng, Bosch, Checkmate, Tewort) and logos.
           </p>
         </div>
 

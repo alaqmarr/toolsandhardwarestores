@@ -28,6 +28,7 @@ interface StoreLocationItem {
   latitude: number
   longitude: number
   hours: string
+  mapUrl?: string | null
   isPrimary: boolean
 }
 
@@ -54,6 +55,7 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
   const [latitude, setLatitude] = useState<string>('17.4326')
   const [longitude, setLongitude] = useState<string>('78.4871')
   const [hours, setHours] = useState('Mon-Sat: 9:30 AM - 8:30 PM, Sun: 10:00 AM - 2:00 PM')
+  const [mapUrl, setMapUrl] = useState('')
   const [isPrimary, setIsPrimary] = useState(false)
 
   const openNewModal = () => {
@@ -61,10 +63,11 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
     setName('')
     setAddress('')
     setPhone('+91 98854 16452')
-    setEmail('sales@toolsandhardwarestores.com')
-    setLatitude('17.4326')
-    setLongitude('78.4871')
+    setEmail('ths.exclusive1973@gmail.com')
+    setLatitude('17.4339')
+    setLongitude('78.4878')
     setHours('Mon-Sat: 9:30 AM - 8:30 PM, Sun: 10:00 AM - 2:00 PM')
+    setMapUrl('')
     setIsPrimary(stores.length === 0)
     setIsModalOpen(true)
   }
@@ -78,6 +81,7 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
     setLatitude(st.latitude.toString())
     setLongitude(st.longitude.toString())
     setHours(st.hours)
+    setMapUrl(st.mapUrl || '')
     setIsPrimary(st.isPrimary)
     setIsModalOpen(true)
   }
@@ -114,6 +118,7 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
       latitude: latNum,
       longitude: lngNum,
       hours,
+      mapUrl: mapUrl.trim() || null,
       isPrimary,
     }
 
@@ -464,7 +469,7 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="sales@toolsandhardwarestores.com"
+                    placeholder="ths.exclusive1973@gmail.com"
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
                   />
                 </div>
@@ -520,6 +525,19 @@ export default function StoresAdminClient({ stores: initialStores }: StoresAdmin
                   onChange={(e) => setHours(e.target.value)}
                   placeholder="Mon-Sat: 9:30 AM - 8:30 PM, Sun: 10:00 AM - 2:00 PM"
                   className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-semibold text-slate-900 placeholder:text-slate-400 outline-none transition"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Google Maps Link (Optional)
+                </label>
+                <input
+                  type="url"
+                  value={mapUrl}
+                  onChange={(e) => setMapUrl(e.target.value)}
+                  placeholder="https://maps.app.goo.gl/... or https://g.co/kgs/..."
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-amber-500 text-sm font-mono text-slate-900 placeholder:text-slate-400 outline-none transition"
                 />
               </div>
 

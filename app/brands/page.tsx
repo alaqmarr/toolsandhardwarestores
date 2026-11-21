@@ -7,9 +7,9 @@ import type { Metadata } from 'next'
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Authorized Tool Brands | Tools & Hardware Stores - Worldwide Industrial Dealer',
+  title: 'Authorized Tool Brands | Tools & Hardware Stores',
   description:
-    'Explore authorized tool brands stocked at Tools & Hardware Stores. Major distributor for Bosch, DeWalt, Hitachi (Hikoki), Makita, Stanley, Black & Decker, and more.',
+    'Explore authorized tool brands stocked at Tools & Hardware Stores in Secunderabad: Powerbilt, DongCheng, Bosch, Checkmate, Tewort, Powermatic, and Iron King.',
 }
 
 export default async function BrandsPage() {
@@ -88,7 +88,7 @@ export default async function BrandsPage() {
                 </h2>
                 <p className="text-sm text-slate-600 mt-2 leading-relaxed line-clamp-3">
                   {brand.description ||
-                    `Authorized wholesale distributor for ${brand.name} power tools, heavy machinery, and industrial accessories worldwide.`}
+                    `Authorized wholesale distributor for ${brand.name} power tools, heavy machinery, and industrial accessories.`}
                 </p>
               </div>
 

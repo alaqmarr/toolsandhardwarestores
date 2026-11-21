@@ -4,12 +4,11 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import {
-  Wrench,
   Search,
   MapPin,
   Menu,
   X,
-  Star,
+  ShieldCheck,
   Settings,
 } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
@@ -44,11 +43,26 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
 
   const handleFindClosestStore = () => {
     setLocating(true)
+    const stores = [
+      {
+        name: 'THS HQ',
+        lat: 17.4339,
+        lon: 78.4878,
+        url: 'https://maps.app.goo.gl/y3eDjWizCPCTYuUo8',
+      },
+      {
+        name: 'THS Exclusive Showroom',
+        lat: 17.4326,
+        lon: 78.4871,
+        url: 'https://g.co/kgs/7zVBJG',
+      },
+    ]
+
     if (!navigator.geolocation) {
       setClosestStore({
-        name: 'Flagship Showroom',
-        dist: 'Central Hub',
-        url: 'https://www.google.com/maps/dir/?api=1&destination=17.4326,78.4850',
+        name: stores[0].name,
+        dist: 'Ranigunj HQ',
+        url: stores[0].url,
       })
       setLocating(false)
       return
@@ -57,31 +71,35 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
       (pos) => {
         const lat1 = pos.coords.latitude
         const lon1 = pos.coords.longitude
-        const lat2 = 17.4326
-        const lon2 = 78.4850
         const R = 6371 // km
-        const dLat = ((lat2 - lat1) * Math.PI) / 180
-        const dLon = ((lon2 - lon1) * Math.PI) / 180
-        const a =
-          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos((lat1 * Math.PI) / 180) *
-            Math.cos((lat2 * Math.PI) / 180) *
-            Math.sin(dLon / 2) *
-            Math.sin(dLon / 2)
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-        const d = R * c
+        const withDist = stores
+          .map((s) => {
+            const dLat = ((s.lat - lat1) * Math.PI) / 180
+            const dLon = ((s.lon - lon1) * Math.PI) / 180
+            const a =
+              Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos((lat1 * Math.PI) / 180) *
+                Math.cos((s.lat * Math.PI) / 180) *
+                Math.sin(dLon / 2) *
+                Math.sin(dLon / 2)
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+            return { ...s, d: R * c }
+          })
+          .sort((a, b) => a.d - b.d)
+
+        const nearest = withDist[0]
         setClosestStore({
-          name: 'Flagship Showroom',
-          dist: `${d.toFixed(1)} km away`,
-          url: `https://www.google.com/maps/dir/?api=1&destination=17.4326,78.4850`,
+          name: nearest.name,
+          dist: `${nearest.d.toFixed(1)} km away`,
+          url: nearest.url,
         })
         setLocating(false)
       },
       () => {
         setClosestStore({
-          name: 'Flagship Showroom',
-          dist: 'Central Hub',
-          url: 'https://www.google.com/maps/dir/?api=1&destination=17.4326,78.4850',
+          name: stores[0].name,
+          dist: 'Ranigunj HQ',
+          url: stores[0].url,
         })
         setLocating(false)
       }
@@ -108,19 +126,18 @@ export default function Navbar({ primaryPhone, addressText }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-      {/* Top micro bar with rating & location banner */}
+      {/* Top micro bar with store & location banner */}
       <div className="bg-slate-900 text-white py-1.5 px-4 sm:px-6 lg:px-10 text-xs">
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-4 text-slate-200">
-            <span className="flex items-center gap-1.5 font-bold text-amber-400">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              4.9★ Rated
-              <span className="text-slate-300 font-normal">(379+ Reviews)</span>
+            <span className="flex items-center gap-1.5 font-bold text-red-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-red-400" />
+              Wholesale &amp; Retail Counter
             </span>
             <span className="hidden sm:inline-block text-slate-600">|</span>
             <span className="hidden sm:flex items-center gap-1 text-slate-300 truncate max-w-md">
               <MapPin className="w-3.5 h-3.5 text-red-400 shrink-0" />
-              Ranigunj HQ • Ready Stock & Counter Supply
+              Ranigunj HQ • Secunderabad, Telangana
             </span>
           </div>
           <div className="flex items-center gap-3">

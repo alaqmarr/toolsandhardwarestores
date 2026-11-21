@@ -144,7 +144,7 @@ export default function NavbarUniversalSearch({ onNavigate }: NavbarUniversalSea
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search over 10,000+ power tools, spare armatures, brands, or catalogues..."
+          placeholder="Search industrial power tools, spare armatures, brands, or catalogues..."
           value={query}
           onFocus={() => {
             if (query.trim()) setIsOpen(true)

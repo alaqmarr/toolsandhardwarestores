@@ -26,9 +26,9 @@ export default async function CategoriesPage() {
           Industrial Tool & Equipment Categories
         </h1>
         <p className="text-slate-600 max-w-2xl text-sm sm:text-base">
-          Browse our full wholesale inventory of power tools, heavy machinery, ringsaw cutters, and
-          measuring instruments. Click any category to view available models from Bosch, DeWalt,
-          Hitachi (Hikoki), Makita, and specialty professional manufacturers.
+          Browse our wholesale and retail inventory of power tools, cordless systems, diamond blades,
+          agriculture machinery, and accessories. Click any category to explore models from Powerbilt,
+          DongCheng, Bosch, Checkmate, Tewort, Powermatic, and Iron King.
         </p>
       </div>
 
@@ -98,8 +98,8 @@ export default async function CategoriesPage() {
                 Armatures, Rotors & Universal Carbon Brushes
               </h2>
               <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                Explore our comprehensive spares inventory with subcategories and interactive tool
-                fitment modal for Bosch, DeWalt, Hitachi, Makita, and Powerbilt ringsaw machines.
+                Explore our comprehensive spares inventory with subcategories and compatible tool
+                fitments for Powerbilt, Checkmate, Tewort, Powermatic, and compatible power tools.
               </p>
             </div>
 

@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: CategoryDetailPageProps): Pro
     return { title: 'Category Not Found | Tools & Hardware Stores' }
   }
 
-  const titleText = `${category.name} | Industrial Power Tools - Worldwide Industrial Dealer`
-  const descText = `${category.description || 'Comprehensive industrial tool inventory'} Stocked & Ready for Dispatch. Major distributors for Bosch, DeWalt, Hitachi, Makita.`
+  const titleText = `${category.name} | Tools & Hardware Stores`
+  const descText = `${category.description || 'Comprehensive industrial tool inventory'} Available at Tools & Hardware Stores, Secunderabad across Powerbilt, DongCheng, Bosch, Checkmate, Tewort, Powermatic, and Iron King.`
 
   return {
     title: titleText,

@@ -23,6 +23,7 @@ export async function PUT(
       latitude,
       longitude,
       hours,
+      mapUrl,
       isPrimary,
     } = body;
 
@@ -43,6 +44,7 @@ export async function PUT(
         ...(latitude !== undefined && { latitude: Number(latitude) }),
         ...(longitude !== undefined && { longitude: Number(longitude) }),
         ...(hours && { hours: hours.trim() }),
+        ...(mapUrl !== undefined && { mapUrl: mapUrl ? mapUrl.trim() : null }),
         ...(isPrimary !== undefined && { isPrimary: Boolean(isPrimary) }),
       },
     });
